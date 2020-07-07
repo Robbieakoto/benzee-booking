@@ -34,7 +34,8 @@
         <div class="relative pt-8 px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between">
               <div>
-                <img class="h-6 lg:h-8 xl:h-9" src="/img/tailwindui-logo-on-dark.svg" alt="Tailwind UI">
+                <!-- <img class="h-6 lg:h-8 xl:h-9" src="/img/tailwindui-logo-on-dark.svg" alt="Tailwind UI"> -->
+                Benzee Booking
               </div>
               <div>
                 <a href="/login" class="text-xl font-semibold text-black focus:outline-none focus:underline">
@@ -138,7 +139,7 @@
 
                     <div class="mt-10 flex-shrink w-full inline-block relative">
                       <label for="category" class="block text-md md:text-2xl leading-5 mb-3 font-semibold text-gray-600">Instituition</label>
-                      <input type="tel" name="text" v-model="instituition" class="form-input block w-full pl-7 pr-12 py-5 sm:text-sm sm:leading-5" required />
+                      <input type="text" name="text" v-model="instituition" class="form-input block w-full pl-7 pr-12 py-5 sm:text-sm sm:leading-5" required />
                     </div>
 
                     <div class="mt-10 flex-shrink w-full inline-block relative">
