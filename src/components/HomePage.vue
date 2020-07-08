@@ -84,12 +84,18 @@
                     for="category"
                     class="block mb-2 leading-none text-gray-800 font-medium"
                   >Nationality</label>
-                  <country-select
+                  <select
+                    aria-label="Type"
                     v-model="nationality"
-                    :country="country"
-                    topCountry="US"
-                    class="form-select border-gray-300 shadow-sm block appearance-none text-gray-600 w-full bg-white border px-4 pr-12 py-3 rounded"
-                  />
+                    class="form-select shadow-sm block appearance-none text-gray-600 w-full bg-white border border-gray-300 px-4 pr-12 py-3 rounded"
+                  >
+                    <option disabled selected value>Choose Nationality</option>
+                    <option
+                      v-for="data in countries"
+                      v-bind:key="data.countryShortCode"
+                      :value="data"
+                    >{{data.countryName}}</option>
+                  </select>
                 </div>
                 <div class="mt-8 flex-shrink w-full md:w-1/2 inline-block relative px-3">
                   <label
@@ -185,13 +191,15 @@
 </template>
 
 <script>
-import json from "../../json/room-types.json";
+import room_types from "../../json/room-types.json";
+import countries from "../../json/countries.json";
 
 export default {
-  name: "HelloWorld",
+  name: "HomePage",
   data: () => ({
     country: "",
-    room_types: json,
+    room_types: room_types,
+    countries: countries,
     booking: {
       fullname: "",
       email: "",
