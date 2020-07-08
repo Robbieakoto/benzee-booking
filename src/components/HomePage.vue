@@ -183,8 +183,7 @@
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden lg:block">
       <img
         class="h-full w-full"
-        src="@/assets/images/sample-room.jpg"
-        style="-webkit-filter: blur(1px) brightness(0.7); -moz-filter: blur(1px) brightness(0.7); -ms-filter: blur(1px) brightness(0.7); -o-filter: blur(1px) brightness(0.7);filter: blur(1px) brightness(0.7);"
+        src="@/assets/images/sample-image.jpg"
         alt="sample-room"
       />
     </div>
