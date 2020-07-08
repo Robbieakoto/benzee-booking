@@ -35,7 +35,7 @@
               class="mt-3 text-xl text-gray-500 sm:mt-5 sm:text-2xl sm:max-w-xl md:mt-5 md:text-xl lg:mx-0"
             >We'd love to be your second home. Book a room and let's make you feel at home.</p>
             <!-- booking form section -->
-            <form class="py-12 border-gray-200 lg:w-full mb-8" @submit.prevent="bookroom">
+            <form class="py-12 border-gray-200 lg:w-full" @submit.prevent="bookroom">
               <label
                 for="category"
                 class="block mb-2 leading-none text-gray-800 font-medium"
@@ -84,12 +84,18 @@
                     for="category"
                     class="block mb-2 leading-none text-gray-800 font-medium"
                   >Nationality</label>
-                  <country-select
+                  <select
+                    aria-label="Type"
                     v-model="nationality"
-                    :country="country"
-                    topCountry="US"
-                    class="form-select border-gray-300 shadow-sm block appearance-none text-gray-600 w-full bg-white border px-4 pr-12 py-3 rounded"
-                  />
+                    class="form-select shadow-sm block appearance-none text-gray-600 w-full bg-white border border-gray-300 px-4 pr-12 py-3 rounded"
+                  >
+                    <option disabled selected value>Choose Nationality</option>
+                    <option
+                      v-for="data in countries"
+                      v-bind:key="data.countryShortCode"
+                      :value="data"
+                    >{{data.countryName}}</option>
+                  </select>
                 </div>
                 <div class="mt-8 flex-shrink w-full md:w-1/2 inline-block relative px-3">
                   <label
@@ -176,8 +182,9 @@
 
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden lg:block">
       <img
-        class="h-full w-full object-cover"
-        src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit"
+        class="h-full w-full"
+        src="@/assets/images/sample-room.jpg"
+        style="-webkit-filter: blur(1px) brightness(0.7); -moz-filter: blur(1px) brightness(0.7); -ms-filter: blur(1px) brightness(0.7); -o-filter: blur(1px) brightness(0.7);filter: blur(1px) brightness(0.7);"
         alt="sample-room"
       />
     </div>
@@ -185,13 +192,15 @@
 </template>
 
 <script>
-import json from "../../json/room-types.json";
+import room_types from "../../json/room-types.json";
+import countries from "../../json/countries.json";
 
 export default {
-  name: "HelloWorld",
+  name: "HomePage",
   data: () => ({
     country: "",
-    room_types: json,
+    room_types: room_types,
+    countries: countries,
     booking: {
       fullname: "",
       email: "",

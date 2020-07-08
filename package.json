@@ -11,8 +11,7 @@
     "@tailwindcss/ui": "^0.3.0",
     "core-js": "^3.6.5",
     "tailwindcss": "^1.4.6",
-    "vue": "^2.6.11",
-    "vue-country-region-select": "^2.0.14"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
