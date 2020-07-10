@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen flex items-center justify-center bg-gray-50 px-4 sm:px-6 lg:px-8">
+  <div class="flex items-center justify-center py-20 sm:py-32 md:py-48 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full">
       <div>
         <router-link to="/" class="text-2xl items-center">
           <img class="mx-auto h-20 w-auto" src="@/assets/images/logo.png" alt="logo" />
         </router-link>
         <h2
-          class="mt-6 text-center text-2xl leading-9 font-extrabold text-gray-900"
+          class="mt-10 text-center text-2xl leading-9 font-extrabold text-gray-900"
         >Sign in to your account</h2>
       </div>
       <form class="mt-8" action="#">
