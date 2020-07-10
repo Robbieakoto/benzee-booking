@@ -14,15 +14,13 @@
         <div
           class="flex items-center justify-between relative pt-12 md:pt-24 lg:px-10 xl:px-20 lg:pb-8"
         >
-          <div class="text-2xl text-gray-600">Benzee Booking</div>
-          <div>
-            <a
-              href="/login"
-              class="text-sm font-medium text-gray-500 focus:outline-none focus:underline"
-            >Login →</a>
+        <img class="h-20 w-auto" src="@/assets/images/logo.png" alt="logo" />
+            <div>
+              <router-link to="/login" class="text-sm font-medium text-gray-500 focus:outline-none focus:underline">
+                Login →
+              </router-link>
           </div>
         </div>
-
         <main
           class="mx-auto max-w-screen-xl mt-10 sm:mt-12 lg:mt-4 relative w-full lg:flex lg:items-center lg:justify-center lg:w-4/5"
         >
