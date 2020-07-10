@@ -16,7 +16,7 @@
         >
         <img class="h-20 w-auto" src="@/assets/images/logo.png" alt="logo" />
             <div>
-              <router-link to="/login" class="text-sm font-medium text-gray-500 focus:outline-none focus:underline">
+              <router-link :to="{name: 'login'}" class="text-sm font-medium text-gray-500 focus:outline-none focus:underline">
                 Login →
               </router-link>
           </div>
