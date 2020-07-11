@@ -11,13 +11,16 @@
           <polygon points="50,0 100,0 50,100 0,100" />
         </svg>
 
-        <div class="flex items-center justify-between relative pt-10 lg:px-10 xl:px-20 lg:pb-8">
-          <img class="h-20 w-auto" src="@/assets/images/logo.png" alt="logo" />
-          <div>
-            <router-link
-              :to="{name: 'login'}"
-              class="text-sm font-medium text-gray-500 focus:outline-none focus:underline"
-            >Login →</router-link>
+        <div
+          class="flex items-center justify-between relative pt-12 md:pt-24 lg:px-10 xl:px-20 lg:pb-8"
+        >
+          <router-link :to="{name: 'Home'}">
+            <img class="h-20 w-auto" src="@/assets/images/logo.png" alt="logo" />
+          </router-link>
+            <div>
+              <router-link :to="{name: 'login'}" class="text-sm font-medium text-gray-500 focus:outline-none focus:underline">
+                Login →
+              </router-link>
           </div>
         </div>
         <main
