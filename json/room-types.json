@@ -1,58 +1,71 @@
 {
-    "0": {
-        "id": "1",
-        "room_type": "Single Room"
-    },
-    "1": {
-        "id": "2",
-        "room_type": "SIngle Room with Aircondition"
-    },
-    "2": {
-        "id": "3",
-        "room_type": "Large SIngle room"
-    },
-    "3":{
-        "id": "4",
-        "room_type": "Large single room with Aircondition"
-    },
-    "4": {
-        "id": "5",
-        "room_type": "Special single room"
-    },
-    "5": {
-        "id": "6",
-        "room_type": "Special single room with Aircondition"
-    },
-    "6": {
-        "id": "7",
-        "room_type": "Standard Double room"
-    },
-    "7": {
-        "id": "8",
-        "room_type": "Standard double room with Aircondition"
-    },
-    "8": {
-        "id": "9",
-        "room_type": "Mini double room"
-    },
-    "9": {
-        "id": "10",
-        "room_type": "Mini double room with Air Condition"
-    },
-    "10": {
-        "id": "11",
-        "room_type": "Large double room"
-    },
-    "11": {
-        "id": "12",
-        "room_type": "Large double room with Aircondition"
-    },
-    "12": {
-        "id": "13",
-        "room_type": "Special double room"
-    },
-    "13": {
-        "id": "14",
-        "room_type": "One Bedroom Apartment"
-    }
+  "0": {
+    "key": "1",
+    "value": "12345hgynm",
+    "label": "Single Room"
+  },
+  "1": {
+    "key": "2",
+    "value": "12345hgynm",
+    "label": "SIngle Room with Aircondition"
+  },
+  "2": {
+    "key": "3",
+    "value": "12345hgynm",
+    "label": "Large SIngle room"
+  },
+  "3": {
+    "key": "4",
+    "value": "12345hgynm",
+    "label": "Large single room with Aircondition"
+  },
+  "4": {
+    "key": "5",
+    "value": "12345hgynm",
+    "label": "Special single room"
+  },
+  "5": {
+    "key": "6",
+    "value": "12345hgynm",
+    "label": "Special single room with Aircondition"
+  },
+  "6": {
+    "key": "7",
+    "value": "12345hgynm",
+    "label": "Standard Double room"
+  },
+  "7": {
+    "key": "8",
+    "value": "12345hgynm",
+    "label": "Standard double room with Aircondition"
+  },
+  "8": {
+    "key": "9",
+    "value": "12345hgynm",
+    "label": "Mini double room"
+  },
+  "9": {
+    "key": "10",
+    "label": "Mini double room with Air Condition"
+  },
+  "10": {
+    "key": "11",
+    "value": "12345hgynm",
+    "label": "Large double room"
+  },
+  "11": {
+    "key": "12",
+    "value": "12345hgynm",
+    "label": "Large double room with Aircondition"
+  },
+  "12": {
+    "key": "13",
+    "value": "12345hgynm",
+    "label": "Special double room"
+  },
+  "13": {
+    "key": "14",
+    "value": "12345hgynm",
+    "label": "One Bedroom Apartment"
+  }
 }

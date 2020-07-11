@@ -8,7 +8,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: () => import( /* webpackChunkName: "about" */ '../views/Home.vue')
+    component: () => import( /* webpackChunkName: "book" */ '../views/Home.vue')
   },
   {
     path: '/login',
@@ -16,7 +16,7 @@ Vue.use(VueRouter)
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
+    component: () => import(/* webpackChunkName: "login" */ '../views/Login.vue')
   },
   {
     path: '/dashboard',
@@ -24,8 +24,24 @@ Vue.use(VueRouter)
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Dashboard.vue')
-  }
+    component: () => import(/* webpackChunkName: "dashboard" */ '../views/Dashboard.vue')
+  },
+  {
+    path: '/rooms',
+    name: 'rooms-list',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "rooms-list" */ '../views/Rooms/RoomsList.vue')
+  },
+  {
+  path: '/bookings',
+  name: 'bookings-list',
+  // route level code-splitting
+  // this generates a separate chunk (about.[hash].js) for this route
+  // which is lazy-loaded when the route is visited.
+  component: () => import(/* webpackChunkName: "bookings-list" */ '../views/Bookings/BookingsList.vue')
+}
 ]
 
 const router = new VueRouter({
