@@ -24,7 +24,7 @@
           </div>
         </div>
         <main
-          class="mx-auto max-w-screen-xl mt-10 sm:mt-12 lg:mt-4 relative w-full lg:flex lg:items-center lg:justify-center lg:w-4/5"
+          class="mx-auto max-w-screen-xl mt-8 relative w-full lg:flex lg:items-center lg:justify-center lg:w-4/5"
         >
           <div class="text-left">
             <h2 class="text-4xl font-extrabold text-gray-800 leading-tight sm:leading-none">
@@ -32,10 +32,10 @@
               <br class="xl:hidden" />
             </h2>
             <p
-              class="mt-3 text-xl text-gray-500 sm:mt-5 sm:text-2xl sm:max-w-xl md:mt-5 md:text-xl lg:mx-0"
-            >We'd love to be your second home. Book a room and let's make you feel at home.</p>
+              class="mt-3 text-xl text-gray-500 sm:text-2xl sm:max-w-xl md:text-xl lg:mx-0"
+            >We can't wait to be your second home. Book a room and let's make you feel at home.</p>
             <!-- booking form section -->
-            <form class="py-12 border-gray-200 lg:w-full" @submit.prevent="bookroom">
+            <form class="py-8 border-gray-200 lg:w-full" @submit.prevent="bookroom">
               <label
                 for="category"
                 class="block mb-2 leading-none text-gray-800 font-medium"
@@ -181,11 +181,7 @@
     </div>
 
     <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 hidden lg:block">
-      <img
-        class="h-full w-full"
-        src="@/assets/images/sample-image.jpg"
-        alt="sample-room"
-      />
+      <img class="h-full w-full" src="@/assets/images/sample-image.jpg" alt="sample-room" />
     </div>
   </div>
 </template>
