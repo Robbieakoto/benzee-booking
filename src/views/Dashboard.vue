@@ -7,9 +7,38 @@
     </template>
 
     <template v-slot:content>
-      <div class="bg-white shadow overflow-hidden rounded-md">
+      <div class="bg-white shadow overflow-hidden rounded-md my-2 mb-8">
+        <div class="lg:flex">
+          <div class="w-1/3 text-center py-8">
+            <div class="border-r">
+              <div class="text-grey-darker mb-2">
+                <span class="text-5xl">21</span>
+              </div>
+              <div class="text-sm uppercase text-grey tracking-wide">Pending Requests</div>
+            </div>
+          </div>
+          <div class="w-1/3 text-center py-8">
+            <div class="border-r">
+              <div class="text-grey-darker mb-2">
+                <span class="text-5xl">12</span>
+              </div>
+              <div class="text-sm uppercase text-grey tracking-wide">Paid Bookings</div>
+            </div>
+          </div>
+          <div class="w-1/3 text-center py-8">
+            <div>
+              <div class="text-grey-darker mb-2">
+                <span class="text-5xl">54</span>
+              </div>
+              <div class="text-sm uppercase text-grey tracking-wide">Rooms</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow overflow-hidden rounded-md my-2">
         <div class="bg-white px-4 pt-5 border-b border-gray-200 sm:px-6">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">Candidates</h3>
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
           <div class="pt-3 pb-4 sm:p-0">
             <div class="sm:hidden">
               <select
@@ -28,11 +57,11 @@
                   <router-link
                     :to="{name: 'Login'}"
                     class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700 transition ease-in-out duration-150"
-                  >Recent Bookings</router-link>
+                  >Bookings</router-link>
                   <router-link
                     :to="{name: 'Login'}"
                     class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150"
-                  >Pending Bookings</router-link>
+                  >Payments</router-link>
                 </nav>
               </div>
             </div>
@@ -81,52 +110,37 @@
             >
               <div class="flex items-center px-4 py-4 sm:px-6">
                 <div class="min-w-0 flex-1 flex items-center">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="h-12 w-12 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt
-                    />
-                  </div>
                   <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                     <div>
                       <div
                         class="text-sm leading-5 font-medium text-indigo-600 truncate"
-                      >Ricardo Cooper</div>
+                      >Richard Osei</div>
                       <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                        <svg
-                          class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                        <span class="truncate">ricardo@example.com</span>
+                        <span class="truncate">Foundation - Lancaster University</span>
                       </div>
                     </div>
                     <div class="hidden md:block">
                       <div>
                         <div class="text-sm leading-5 text-gray-900">
-                          Applied on
+                          Submitted on
                           <time datetime="2020-01-07">January 7, 2020</time>
                         </div>
                         <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                           <svg
-                            class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                            fill="currentColor"
+                            class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
                             viewBox="0 0 20 20"
+                            fill="currentColor"
                           >
                             <path
+                              d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
+                            />
+                            <path
                               fill-rule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
                               clip-rule="evenodd"
                             />
                           </svg>
-                          Completed phone screening
+                          Pending Payment
                         </div>
                       </div>
                     </div>
@@ -151,50 +165,33 @@
             >
               <div class="flex items-center px-4 py-4 sm:px-6">
                 <div class="min-w-0 flex-1 flex items-center">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="h-12 w-12 rounded-full"
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt
-                    />
-                  </div>
                   <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                     <div>
-                      <div class="text-sm leading-5 font-medium text-indigo-600 truncate">Ted Fox</div>
+                      <div
+                        class="text-sm leading-5 font-medium text-indigo-600 truncate"
+                      >Joshua Addai</div>
                       <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                        <svg
-                          class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                        <span class="truncate">ted@example.com</span>
+                        <span class="truncate">1st Year - Knutsford University College</span>
                       </div>
                     </div>
                     <div class="hidden md:block">
                       <div>
                         <div class="text-sm leading-5 text-gray-900">
-                          Applied on
+                          Submitted on
                           <time datetime="2020-01-07">January 7, 2020</time>
                         </div>
                         <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                           <svg
-                            class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                            class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-500"
                             fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 20 20"
                           >
                             <path
-                              fill-rule="evenodd"
-                              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                              clip-rule="evenodd"
+                              d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
                             />
                           </svg>
-                          Completed phone screening
+                          Awaiting Room Assignment
                         </div>
                       </div>
                     </div>
@@ -219,37 +216,19 @@
             >
               <div class="flex items-center px-4 py-4 sm:px-6">
                 <div class="min-w-0 flex-1 flex items-center">
-                  <div class="flex-shrink-0">
-                    <img
-                      class="h-12 w-12 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80"
-                      alt
-                    />
-                  </div>
                   <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
                     <div>
                       <div
                         class="text-sm leading-5 font-medium text-indigo-600 truncate"
                       >Ricardo Cooper</div>
                       <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                        <svg
-                          class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
-                          fill="currentColor"
-                          viewBox="0 0 20 20"
-                        >
-                          <path
-                            fill-rule="evenodd"
-                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884zM18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                        <span class="truncate">ricardo@example.com</span>
+                        <span class="truncate">2nd Year - Lancaster University</span>
                       </div>
                     </div>
                     <div class="hidden md:block">
                       <div>
                         <div class="text-sm leading-5 text-gray-900">
-                          Applied on
+                          Submitted on
                           <time datetime="2020-01-07">January 7, 2020</time>
                         </div>
                         <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
@@ -264,7 +243,7 @@
                               clip-rule="evenodd"
                             />
                           </svg>
-                          Completed phone screening
+                          Completed
                         </div>
                       </div>
                     </div>

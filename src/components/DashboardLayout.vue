@@ -13,15 +13,18 @@
               <div class="ml-10 flex items-baseline">
                 <router-link
                   :to="{name: 'dashboard'}"
-                  class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700"
+                  class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  active-class="text-white bg-gray-900"
                 >Dashboard</router-link>
                 <router-link
                   :to="{name: 'bookings-list'}"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  active-class="text-white bg-gray-900"
                 >Bookings</router-link>
                 <router-link
                   :to="{name: 'rooms-list'}"
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  active-class="text-white bg-gray-900"
                 >Rooms</router-link>
               </div>
             </div>
@@ -50,6 +53,7 @@
                     id="user-menu"
                     aria-label="User menu"
                     aria-haspopup="true"
+                    @click="displayProfileDropdown()"
                   >
                     <img
                       class="h-8 w-8 rounded-full"
@@ -68,7 +72,10 @@
                     From: "transform opacity-100 scale-100"
                     To: "transform opacity-0 scale-95"
                 -->
-                <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                <div
+                  v-if="showProfileDropdown"
+                  class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg"
+                >
                   <div
                     class="py-1 rounded-md bg-white shadow-xs"
                     role="menu"
@@ -197,6 +204,14 @@
 </template>
 <script>
 export default {
-  name: "DashboardLayout"
+  name: "DashboardLayout",
+  data: () => ({
+    showProfileDropdown: false
+  }),
+  methods: {
+    displayProfileDropdown() {
+      this.showProfileDropdown = !this.showProfileDropdown;
+    }
+  }
 };
 </script>

@@ -12,7 +12,7 @@
         </svg>
 
         <div
-          class="flex items-center justify-between relative pt-12 md:pt-24 lg:px-10 xl:px-20 lg:pb-8"
+          class="flex items-center justify-between relative pt-8 md:pt-16 px-0 lg:px-10 xl:px-20 lg:pb-8"
         >
           <logo></logo>
           <div>
