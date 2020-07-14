@@ -1,8 +1,19 @@
 <template>
   <dashboard-layout>
     <template v-slot:header>
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:flex lg:justify-between">
         <h1 class="text-3xl font-bold leading-tight text-gray-900">Rooms</h1>
+        <span class="sm:ml-3 shadow-sm rounded-md">
+          <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
+            <!-- <svg class="-ml-1 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg> -->
+            <svg class="-ml-1 mr-2 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="white"/>
+            </svg>
+            Add Room
+          </button>
+        </span>
       </div>
     </template>
 
@@ -20,13 +31,13 @@
                   >Name</th>
                   <th
                     class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                  >Status</th>
+                  >No. of Occupants</th>
                   <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                 </tr>
               </thead>
               <tbody class="bg-white">
                 <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
                     <div class="flex items-center">
                       <div class="ml-4">
                         <div class="text-sm leading-5 font-medium text-gray-900">BG1</div>
@@ -34,41 +45,66 @@
                       </div>
                     </div>
                   </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                     <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                    >Active</span>
+                      class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
+                    >1</span>
                   </td>
                   <td
-                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <span
+                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
+                    >
+                       <router-link :to="{name: 'room-details'}">
+                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                       </router-link>
+                    </span>
                   </td>
                 </tr>
                 <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
                     <div class="flex items-center">
                       <div class="ml-4">
                         <div class="text-sm leading-5 font-medium text-gray-900">BG2</div>
-                        <div class="text-sm leading-5 text-gray-500">Single Room with Air Condition</div>
+                        <div class="text-sm leading-5 text-gray-500">Single Room With Air Condition</div>
                       </div>
                     </div>
                   </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
                     <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                    >Active</span>
+                      class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
+                    >1</span>
                   </td>
                   <td
-                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm"
                   >
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                    <span
+                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
+                    >
+                      <a href="">
+                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </a>
+                    </span>
                   </td>
                 </tr>
+                
                 <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap">
-                    <div class="flex items-center">
-                      <div class="ml-4">
+                  <td class="flex items-center px-4 py-4 sm:px-6">
+                    <div class="min-w-0 flex-1 flex items-center">
+                      <div class="ml-4 trucnate">
                         <div class="text-sm leading-5 font-medium text-gray-900">CF1</div>
                         <div class="text-sm leading-5 text-gray-500">Mini Double Room</div>
                       </div>
@@ -76,11 +112,28 @@
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap">
                     <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800"
-                    >Active</span>
+                      class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
+                    >2</span>
                   </td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                  <!-- <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
                     <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                  </td> -->
+                  <td
+                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
+                  >
+                    <span
+                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
+                    >
+                    <a href="">
+                      <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                          fill-rule="evenodd"
+                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                    </a>
+                    </span>
                   </td>
                 </tr>
               </tbody>
@@ -113,6 +166,7 @@
           </div>
         </div>
       </div>
+
     </template>
   </dashboard-layout>
 </template>
