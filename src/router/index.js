@@ -28,7 +28,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/rooms',
-    name: 'rooms-list',
+    name: 'room-list',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -49,7 +49,15 @@ Vue.use(VueRouter)
   // this generates a separate chunk (about.[hash].js) for this route
   // which is lazy-loaded when the route is visited.
   component: () => import(/* webpackChunkName: "bookings-list" */ '../views/Bookings/BookingsList.vue')
-}
+  },
+  {
+    path: '/bookings',
+    name: 'booking-details',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "booking-details" */ '../views/Bookings/BookingDetails.vue')
+  }
 ]
 
 const router = new VueRouter({

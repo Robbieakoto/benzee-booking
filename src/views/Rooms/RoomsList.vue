@@ -88,7 +88,7 @@
                     <span
                       class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
                     >
-                      <a href="">
+                      <router-link :to="{name: 'room-details'}">
                         <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                           <path
                             fill-rule="evenodd"
@@ -96,7 +96,7 @@
                             clip-rule="evenodd"
                           />
                         </svg>
-                      </a>
+                      </router-link>
                     </span>
                   </td>
                 </tr>
@@ -124,7 +124,7 @@
                     <span
                       class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
                     >
-                    <a href="">
+                    <router-link :to="{name: 'room-details'}">
                       <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                         <path
                           fill-rule="evenodd"
@@ -132,7 +132,7 @@
                           clip-rule="evenodd"
                         />
                       </svg>
-                    </a>
+                    </router-link>
                     </span>
                   </td>
                 </tr>
@@ -170,6 +170,7 @@
     </template>
   </dashboard-layout>
 </template>
+
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
 
