@@ -5,9 +5,6 @@
         <h1 class="text-3xl font-bold leading-tight text-gray-900">Rooms</h1>
         <span class="sm:ml-3 shadow-sm rounded-md">
           <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
-            <!-- <svg class="-ml-1 mr-2 h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
-            </svg> -->
             <svg class="-ml-1 mr-2 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
               <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="white"/>
             </svg>
@@ -115,9 +112,6 @@
                       class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
                     >2</span>
                   </td>
-                  <!-- <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                  </td> -->
                   <td
                     class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
                   >
