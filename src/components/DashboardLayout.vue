@@ -26,6 +26,11 @@
                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
                   active-class="text-white bg-gray-900"
                 >Rooms</router-link>
+                <router-link
+                  :to="{name: 'residents'}"
+                   class="ml-4 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700"
+                  active-class="text-white bg-gray-900"
+                >Residents</router-link>
               </div>
             </div>
           </div>

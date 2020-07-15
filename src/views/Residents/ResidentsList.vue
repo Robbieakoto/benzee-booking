@@ -2,14 +2,8 @@
   <dashboard-layout>
     <template v-slot:header>
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:flex lg:justify-between">
-        <h1 class="text-3xl font-bold leading-tight text-gray-900">Rooms</h1>
+        <h1 class="text-3xl font-bold leading-tight text-gray-900">Residents</h1>
         <span class="sm:ml-3 shadow-sm rounded-md">
-          <router-link  :to="{name: 'add-room'}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
-            <svg class="-ml-1 mr-2 h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="white"/>
-            </svg>
-            Add Room
-          </router-link>
         </span>
       </div>
     </template>
