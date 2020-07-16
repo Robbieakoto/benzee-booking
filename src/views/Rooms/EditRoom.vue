@@ -11,7 +11,7 @@
             <div class="bg-white rounded-lg overflow-hidden shadow transform sm:max-w-lg sm:w-full transition duration-150 ease-in-out" aria-labelledby="modal-headline">
                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <flip-input-with-label
-                    class="mt-2 flex-shrink w-full inline-block relative px-3"
+                    class="mt-2 flex-shrink w-full inline-block relative"
                     label-name="Room Name"
                     input-type="text"
                     input-name="room_name"
@@ -19,7 +19,7 @@
                     ></flip-input-with-label>
 
                    <flip-select-input-with-label
-                    class="mt-2 flex-shrink w-full inline-block relative px-3"
+                    class="mt-2 flex-shrink w-full inline-block relative"
                     label-name="Room Type"
                     input-name="room"
                     option-title="Choose Room Type"
@@ -28,7 +28,7 @@
                     ></flip-select-input-with-label>
 
                     <flip-input-with-label
-                    class="mt-8 flex-shrink w-full inline-block relative px-3"
+                    class="mt-8 flex-shrink w-full inline-block relative"
                     label-name="Number of Occupants"
                     input-type="number"
                     input-name="number_of_occupants"

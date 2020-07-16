@@ -9,7 +9,7 @@
     </template>
 
     <template v-slot:content>
-      <div class="flex flex-col my-2">
+      <div class="flex flex-col m-2 sm:m-0">
         <div class="py-10 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div
             class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
@@ -22,64 +22,41 @@
                   >Name</th>
                   <th
                     class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
-                  >No. of Occupants</th>
+                  >Room</th>
+                  <th
+                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"
+                  >Telephone</th>
                   <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                 </tr>
               </thead>
               <tbody class="bg-white">
                 <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     <div class="flex items-center">
                       <div class="ml-4">
-                        <div class="text-sm leading-5 font-medium text-gray-900">BG1</div>
-                        <div class="text-sm leading-5 text-gray-500">Single Room</div>
+                        <div class="text-sm leading-5 font-medium text-gray-900">Bernard Lane</div>
+                        <div class="text-sm leading-5 text-gray-500">1st Year - Lancaster University</div>
                       </div>
                     </div>
                   </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                    <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
-                    >1</span>
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <div class="text-sm leading-5 text-gray-900">BG1</div>
+                    <div class="text-sm leading-5 text-gray-500">9 months</div>
                   </td>
                   <td
-                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm"
+                    class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
+                  >
+                    <div class="text-sm leading-5 text-gray-900">
+                      0548797248
+                    </div>
+                  </td>
+                  <td
+                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
                   >
                     <span
                       class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
                     >
-                       <router-link :to="{name: 'room-details'}">
-                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                            fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                       </router-link>
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 ">
-                    <div class="flex items-center">
-                      <div class="ml-4">
-                        <div class="text-sm leading-5 font-medium text-gray-900">BG2</div>
-                        <div class="text-sm leading-5 text-gray-500">Single Room With Air Condition</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
-                    <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
-                    >1</span>
-                  </td>
-                  <td
-                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm"
-                  >
-                    <span
-                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
-                    >
-                      <router-link :to="{name: 'room-details'}">
+                      <router-link :to="{name: 'resident-details'}">
                         <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                           <path
                             fill-rule="evenodd"
@@ -91,20 +68,25 @@
                     </span>
                   </td>
                 </tr>
-                
                 <tr>
-                  <td class="flex items-center px-4 py-4 sm:px-6">
-                    <div class="min-w-0 flex-1 flex items-center">
-                      <div class="ml-4 trucnate">
-                        <div class="text-sm leading-5 font-medium text-gray-900">CF1</div>
-                        <div class="text-sm leading-5 text-gray-500">Mini Double Room</div>
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <div class="flex items-center">
+                      <div class="ml-4">
+                        <div class="text-sm leading-5 font-medium text-gray-900">Joshua Addai</div>
+                        <div
+                          class="text-sm leading-5 text-gray-500"
+                        >Foundation - Lancaster University</div>
                       </div>
                     </div>
                   </td>
-                  <td class="px-6 py-4 whitespace-no-wrap">
-                    <span
-                      class="px-2 inline-flex text-xs leading-5 font-semibold text-gray-800"
-                    >2</span>
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <div class="text-sm leading-5 text-gray-900">BG3</div>
+                    <div class="text-sm leading-5 text-gray-500">12 months</div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                    <div class="text-sm leading-5 text-gray-900">
+                      0556565650
+                    </div>
                   </td>
                   <td
                     class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
@@ -112,15 +94,49 @@
                     <span
                       class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
                     >
-                    <router-link :to="{name: 'room-details'}">
-                      <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path
-                          fill-rule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                    </router-link>
+                      <router-link :to="{name: 'resident-details'}">
+                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </router-link>
+                    </span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-6 py-4 whitespace-no-wrap">
+                    <div class="flex items-center">
+                      <div class="ml-4">
+                        <div class="text-sm leading-5 font-medium text-gray-900">Bernard Lane</div>
+                        <div class="text-sm leading-5 text-gray-500">2nd year &ndash; Knutsford University</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap">
+                    <div class="text-sm leading-5 text-gray-900">CF2</div>
+                    <div class="text-sm leading-5 text-gray-500">12 months</div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
+                    <div class="text-sm leading-5 text-gray-900">
+                      0246807737
+                    </div>
+                  </td>
+                  <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
+                    <span
+                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
+                    >
+                      <router-link :to="{name: 'resident-details'}">
+                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path
+                            fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"
+                          />
+                        </svg>
+                      </router-link>
                     </span>
                   </td>
                 </tr>
@@ -154,7 +170,6 @@
           </div>
         </div>
       </div>
-
     </template>
   </dashboard-layout>
 </template>

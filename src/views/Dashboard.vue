@@ -104,8 +104,8 @@
         </div>
         <ul>
           <li>
-            <a
-              href="#"
+            <router-link
+              :to="{name: 'booking-details'}"
               class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
             >
               <div class="flex items-center px-4 py-4 sm:px-6">
@@ -156,11 +156,11 @@
                   </svg>
                 </div>
               </div>
-            </a>
+            </router-link>
           </li>
           <li class="border-t border-gray-200">
-            <a
-              href="#"
+            <router-link
+              :to="{name: 'booking-details'}"
               class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
             >
               <div class="flex items-center px-4 py-4 sm:px-6">
@@ -207,11 +207,11 @@
                   </svg>
                 </div>
               </div>
-            </a>
+            </router-link>
           </li>
           <li class="border-t border-gray-200">
-            <a
-              href="#"
+            <router-link
+              :to="{name: 'booking-details'}"
               class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
             >
               <div class="flex items-center px-4 py-4 sm:px-6">
@@ -259,7 +259,7 @@
                   </svg>
                 </div>
               </div>
-            </a>
+            </router-link>
           </li>
         </ul>
         <div
