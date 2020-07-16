@@ -20,7 +20,6 @@
               Created on January 9, 2020
             </div>
           </div>
-
         </div>
         <div class="mt-5 flex lg:mt-0 lg:ml-4">
             <span class="hidden sm:block shadow-sm rounded-md">
