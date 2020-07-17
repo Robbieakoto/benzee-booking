@@ -28,7 +28,7 @@ Vue.use(VueRouter)
   },
   {
     path: '/rooms',
-    name: 'rooms-list',
+    name: 'room-list',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -43,13 +43,69 @@ Vue.use(VueRouter)
       component: () => import(/* webpackChunkName: "rooms-details" */ '../views/Rooms/RoomDetails.vue')
     },
   {
+    path: '/add-room',
+    name: 'add-room',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "residents" */ '../views/Rooms/AddRoom.vue')
+  },
+  {
+    path: '/edit-room',
+    name: 'edit-room',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import( /* webpackChunkName: "residents" */ '../views/Rooms/EditRoom.vue')
+  },
+  {
+    path: '/room-detials',
+    name: 'room-details',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "rooms-details" */ '../views/Rooms/RoomDetails.vue')
+  },
+  {
   path: '/bookings',
   name: 'bookings-list',
   // route level code-splitting
   // this generates a separate chunk (about.[hash].js) for this route
   // which is lazy-loaded when the route is visited.
   component: () => import(/* webpackChunkName: "bookings-list" */ '../views/Bookings/BookingsList.vue')
-}
+  },
+  {
+    path: '/booking-details',
+    name: 'booking-details',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "booking-details" */ '../views/Bookings/BookingDetails.vue')
+  },
+  {
+    path: '/residents',
+    name: 'residents',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "residents" */ '../views/Residents/ResidentsList.vue')
+  },
+  {
+    path: '/resident-details',
+    name: 'resident-details',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "residents" */ '../views/Residents/ResidentDetails.vue')
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "residents" */ '../views/Settings.vue')
+  }
 ]
 
 const router = new VueRouter({
