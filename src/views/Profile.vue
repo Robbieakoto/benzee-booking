@@ -12,9 +12,9 @@
               <div class=" px-4 sm:pb-6 text-center">
                   <h2 class="mt-6 font-medium text-xl">Baffour Adu Boampong</h2>
                   <p>baffour@gmail.com</p>
-                  <p>0548797248x</p>
+                  <p>0548797248</p>
               </div>
-              <div class="px-10 sm:pb-10">
+              <div class="px-10 py-4 sm:pb-10">
                 <flip-input-with-label
                 class="mt-2 flex-shrink w-full inline-block relative"
                 label-name="Current Password"
@@ -30,7 +30,7 @@
                 :required="true"
                 ></flip-input-with-label>
                 <div class="mt-6">
-                <flip-button label="Update Password">
+                <flip-button label="Update Password" class="mb-5">
                     <svg
                     class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
                     fill="currentColor"
