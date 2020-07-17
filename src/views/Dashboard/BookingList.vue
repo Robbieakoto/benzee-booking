@@ -1,117 +1,41 @@
 <template>
-  <dashboard-layout>
-    <template v-slot:header>
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold leading-tight text-gray-900">Dashboard</h1>
-      </div>
-    </template>
-
-    <template v-slot:content>
-      <div class="bg-white shadow overflow-hidden rounded-md my-2 mb-8 md:mx-0 mx-4">
-        <div class="lg:flex">
-          <div class="lg:w-1/3 text-center py-8">
-            <div class="lg:border-r ">
-              <div class="text-grey-darker mb-2">
-                <span class="text-5xl">21</span>
-              </div>
-              <div class="text-sm uppercase text-grey tracking-wide">Pending Requests</div>
+    <dashboard>
+        <template v-slot:dashboardContent>
+            <div class="px-4 pt-5 pb-3 sm:px-6">
+                <div>
+                    <label for="filter" class="sr-only">Search candidates</label>
+                    <div class="flex rounded-md shadow-sm">
+                    <div class="relative flex-grow focus-within:z-10">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path
+                            fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd"
+                            />
+                        </svg>
+                        </div>
+                        <input
+                        id="filter"
+                        class="appearance-none rounded-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-l-md text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 transition ease-in-out duration-150"
+                        placeholder="John Doe"
+                        />
+                    </div>
+                    <button
+                        class="-ml-px relative flex items-center px-3 py-2 rounded-r-md border border-gray-300 text-sm leading-5 bg-gray-50 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150"
+                    >
+                        <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path
+                            fill-rule="evenodd"
+                            d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
+                            clip-rule="evenodd"
+                        />
+                        </svg>
+                        <span class="ml-2">Filter</span>
+                    </button>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="lg:w-1/3 text-center py-8">
-            <div class="lg:border-r">
-              <div class="text-grey-darker mb-2">
-                <span class="text-5xl">12</span>
-              </div>
-              <div class="text-sm uppercase text-grey tracking-wide">Paid Bookings</div>
-            </div>
-          </div>
-          <div class="lg:w-1/3 text-center py-8">
-            <div>
-              <div class="text-grey-darker mb-2">
-                <span class="text-5xl">54</span>
-              </div>
-              <div class="text-sm uppercase text-grey tracking-wide">Rooms</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="bg-white shadow overflow-hidden rounded-md my-2 md:mx-0 mx-4">
-        <div class="bg-white px-4 pt-5 border-b border-gray-200 sm:px-6">
-          <h3 class="text-lg leading-6 font-medium text-gray-900">Recent Activity</h3>
-          <div class="pt-3 pb-4 sm:p-0">
-            <div class="sm:hidden">
-              <select
-                class="form-select block w-full text-gray-900 border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition ease-in-out duration-150"
-              >
-                <option>
-                  <button
-                    class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700 transition ease-in-out duration-150"
-                    @click="changeView('bookings')"
-                  >Bookings</button>
-                </option>
-                <option>
-                  <button
-                    class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150"
-                    @click="changeView('payments')"
-                  >Payments</button>
-                </option>
-              </select>
-            </div>
-            <div class="hidden sm:block">
-              <div>
-                <nav class="-mb-px flex">
-                  <button
-                    class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700 transition ease-in-out duration-150"
-                    active-class="border-indigo-500"
-                    @click="changeView('bookings')"
-                  >Bookings</button>
-                  <button 
-                    class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition ease-in-out duration-150"
-                    @click="changeView('payments')"
-                  >Payments</button>
-                </nav>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="px-4 pt-5 pb-3 sm:px-6" v-if="currentTable == 'bookings'">
-          <div>
-              <label for="filter" class="sr-only">Search candidates</label>
-              <div class="flex rounded-md shadow-sm">
-              <div class="relative flex-grow focus-within:z-10">
-                  <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                      fill-rule="evenodd"
-                      d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                      clip-rule="evenodd"
-                      />
-                  </svg>
-                  </div>
-                  <input
-                  id="filter"
-                  class="appearance-none rounded-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-l-md text-gray-900 placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5 transition ease-in-out duration-150"
-                  placeholder="John Doe"
-                  />
-              </div>
-              <button
-                  class="-ml-px relative flex items-center px-3 py-2 rounded-r-md border border-gray-300 text-sm leading-5 bg-gray-50 text-gray-900 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 transition ease-in-out duration-150"
-              >
-                  <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                  <path
-                      fill-rule="evenodd"
-                      d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
-                      clip-rule="evenodd"
-                  />
-                  </svg>
-                  <span class="ml-2">Filter</span>
-              </button>
-              </div>
-          </div>
-            </div>
-
                 <div>
                     <ul>
                     <li>
@@ -273,60 +197,44 @@
                         </router-link>
                     </li>
                 </ul>
-
-              <div
-                class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
-                >
-                <div class="hidden sm:block">
-                    <p class="text-sm leading-5 text-gray-700">
-                    Showing
-                    <span class="font-medium">1</span>
-                    to
-                    <span class="font-medium">10</span>
-                    of
-                    <span class="font-medium">20</span>
-                    results
-                    </p>
-                </div>
-                <div class="flex-1 flex justify-between sm:justify-end">
-                    <a
-                    href="#"
-                    class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
-                    >Previous</a>
-                    <a
-                    href="#"
-                    class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
-                    >Next</a>
-                </div>
-                </div>
+            <div
+            class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
+            >
+            <div class="hidden sm:block">
+                <p class="text-sm leading-5 text-gray-700">
+                Showing
+                <span class="font-medium">1</span>
+                to
+                <span class="font-medium">10</span>
+                of
+                <span class="font-medium">20</span>
+                results
+                </p>
             </div>
-      </div>
-
+            <div class="flex-1 flex justify-between sm:justify-end">
+                <a
+                href="#"
+                class="relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+                >Previous</a>
+                <a
+                href="#"
+                class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
+                >Next</a>
+            </div>
+            </div>
+        </div>
     </template>
-
-  </dashboard-layout>
+    
+    </dashboard>
 </template>
 
 <script>
-// @ is an alias to /src
-import DashboardLayout from "@/components/DashboardLayout.vue";
+import Dashboard from "../Dashboard";
 
 export default {
-  name: "Dashboard",
+  name: "PaymentList",
   components: {
-    DashboardLayout
-  },
-  data(){
-    return{
-      currentTable: 'bookings',
-      paymentsTable:'',
-      bookingsTable:''
-    }
-  },
-  methods:{
-    changeView(viewName){
-      this.currentTable = viewName;
-    }
+    Dashboard
   }
 };
 </script>
