@@ -105,7 +105,24 @@ Vue.use(VueRouter)
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "residents" */ '../views/Settings.vue')
-  }
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "residents" */ '../views/Profile.vue')
+  },
+
+    {
+      path: '/payment-details',
+      name: 'payment-details',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import(/* webpackChunkName: "residents" */ '../views/Payments/PaymentDetails.vue')
+    }
 ]
 
 const router = new VueRouter({

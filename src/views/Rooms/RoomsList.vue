@@ -1,7 +1,7 @@
 <template>
   <dashboard-layout>
     <template v-slot:header>
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:flex lg:justify-between">
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
         <h1 class="text-3xl font-bold leading-tight text-gray-900">Rooms</h1>
         <span class="sm:ml-3 shadow-sm rounded-md">
           <router-link  :to="{name: 'add-room'}" class="inline-flex items-center px-4 py-2 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700 active:bg-indigo-700 transition duration-150 ease-in-out">
@@ -16,7 +16,7 @@
 
     <template v-slot:content>
       <div class="flex flex-col my-2">
-        <div class="py-10 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div class="py-10 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8 mx-4">
           <div
             class="align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b border-gray-200"
           >
