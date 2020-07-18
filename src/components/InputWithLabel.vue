@@ -8,6 +8,8 @@
     <input
       :type="inputType"
       :name="inputName"
+      :value="value"
+      @input="$emit('input', $event.target.value)"
       class="form-input border-gray-300 shadow-sm block w-full pl-7 pr-12 py-3 sm:text-sm sm:leading-5"
       :required="required"
     />
@@ -22,7 +24,8 @@ export default {
     "inputClass",
     "inputType",
     "inputName",
-    "required"
+    "required",
+    "value"
   ]
 };
 </script>

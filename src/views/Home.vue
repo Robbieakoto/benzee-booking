@@ -40,6 +40,7 @@
                 input-type="text"
                 input-name="fullname"
                 :required="true"
+                v-model="resident.fullname"
               ></flip-input-with-label>
 
               <div class="flex flex-wrap -mx-3">
@@ -49,6 +50,7 @@
                   input-type="email"
                   input-name="email"
                   :required="true"
+                  v-model="resident.email"
                 ></flip-input-with-label>
                 <flip-input-with-label
                   class="mt-8 flex-shrink w-full md:w-1/2 inline-block relative px-3"
@@ -56,6 +58,7 @@
                   input-type="tel"
                   input-name="telephone"
                   :required="true"
+                  v-model="resident.telephone"
                 ></flip-input-with-label>
               </div>
 
@@ -67,6 +70,7 @@
                   option-title="Choose your nationality"
                   :required="true"
                   :options="countries"
+                  v-model="resident.nationality"
                 ></flip-select-input-with-label>
                 <flip-input-with-label
                   class="mt-8 flex-shrink w-full md:w-1/2 inline-block relative px-3"
@@ -74,6 +78,7 @@
                   input-type="text"
                   input-name="instituition"
                   :required="true"
+                  v-model="resident.instituition"
                 ></flip-input-with-label>
               </div>
 
@@ -85,6 +90,7 @@
                   option-title="Choose your level"
                   :required="true"
                   :options="levelOptions"
+                  v-model="resident.level"
                 ></flip-select-input-with-label>
                 <flip-select-input-with-label
                   class="md:w-1/2 px-3"
@@ -93,6 +99,7 @@
                   option-title="Choose Room Type"
                   :required="true"
                   :options="roomTypes"
+                  v-model="booking.room_type"
                 ></flip-select-input-with-label>
               </div>
 
@@ -102,10 +109,11 @@
                 option-title="Choose Duration of Stay"
                 :required="true"
                 :options="duration"
+                v-model="booking.duration"
               ></flip-select-input-with-label>
 
               <div class="rounded-md shadow mt-10">
-                <flip-button label="Book a room">
+                <flip-button label="Book a room" @button-clicked="sendBookingRequest()">
                   <svg
                     class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
                     fill="currentColor"
@@ -154,15 +162,18 @@ export default {
     country: "",
     roomTypes,
     countries,
+    resident: {
+      fullname: null,
+      email: null,
+      telephone: null,
+      nationality: null,
+      instituition: null,
+      level: null,
+    },
     booking: {
-      fullname: "",
-      email: "",
-      telephone: "",
-      nationality: "",
-      instituition: "",
-      level: "",
-      room_type: "",
-      duration: ""
+      room_type: null,
+      duration: null,
+      academic_year_id: null
     },
     duration: [
       {
@@ -205,7 +216,9 @@ export default {
     ]
   }),
   methods: {
-    bookroom() {}
+    sendBookingRequest() {
+      console.log("Booking request sent")
+    }
   }
 };
 </script>
