@@ -33,8 +33,35 @@
             <p
               class="mt-3 text-xl text-gray-500 sm:text-2xl sm:max-w-xl md:text-xl lg:mx-0"
             >We can't wait to be your second home. Book a room and let's make you feel at home.</p>
+
+            <div v-if="bookingSubmitted" class="mt-2 bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+              <div class="flex">
+                <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+                <div>
+                  <p class="font-bold">Booking Request Submitted!</p>
+                  <p class="text-sm">Keep an eye on your <b>email ({{ resident.email }})</b> as we review and confirm your request.</p>
+                  <br>
+                  <p class="text-sm">Thank you, for choosing BenZee Residency</p>
+                </div>
+              </div>
+            </div>
+
+            <div v-if="error" class="mt-2 bg-red-100 border-t-4 border-red-500 rounded-b text-red-900 px-4 py-3 shadow-md" role="alert">
+              <div class="flex">
+                <div class="py-1">
+                  <svg class="h-6 w-6 text-red-600 mr-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                  </svg>
+                  </div>
+                <div>
+                  <p class="font-bold">Whoops! something went wrong</p>
+                  <p class="text-sm">{{ error }}</p>
+                </div>
+              </div>
+            </div>
+
             <!-- booking form section -->
-            <form class="py-8 border-gray-200 lg:w-full" @submit.prevent="bookroom">
+            <div class="py-8 border-gray-200 lg:w-full">
               <flip-input-with-label
                 label-name="Full Name"
                 input-type="text"
@@ -74,11 +101,11 @@
                 ></flip-select-input-with-label>
                 <flip-input-with-label
                   class="mt-8 flex-shrink w-full md:w-1/2 inline-block relative px-3"
-                  label-name="Instituition"
+                  label-name="Institution"
                   input-type="text"
-                  input-name="instituition"
+                  input-name="institution"
                   :required="true"
-                  v-model="resident.instituition"
+                  v-model="resident.institution"
                 ></flip-input-with-label>
               </div>
 
@@ -99,7 +126,7 @@
                   option-title="Choose Room Type"
                   :required="true"
                   :options="roomTypes"
-                  v-model="booking.room_type"
+                  v-model="booking.roomType"
                 ></flip-select-input-with-label>
               </div>
 
@@ -112,8 +139,23 @@
                 v-model="booking.duration"
               ></flip-select-input-with-label>
 
-              <div class="rounded-md shadow mt-10">
-                <flip-button label="Book a room" @button-clicked="sendBookingRequest()">
+              <div v-if="feeEstimate != 0" class="bg-gray-100 h-auto mt-6 rounded-lg shadow-inner p-4">
+                  <div class="w-full text-center text-gray-700 flex flex-wrap justify-center">
+                      <div class="font-bold md:w-2/5 w-full pb-2">
+                          <span class="text-xl">$</span>
+                          <span class="text-3xl mr-2"> {{ feeEstimate }} </span>                               
+                      </div>
+                      <div class="md:w-3/5 w-full">
+                          <span class="text-sm font-medium">
+                              This is your hostel fee for 
+                              <span id="estimate-duration">{{ booking.duration }}</span>. Electricity bills not inclusive 
+                          </span>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="rounded-md shadow mt-4">
+                <flip-button label="Book a room" @button-clicked="storeBookingRequest()">
                   <svg
                     class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
                     fill="currentColor"
@@ -127,7 +169,7 @@
                   </svg>
                 </flip-button>
               </div>
-            </form>
+            </div>
             <!-- booking form ends here -->
           </div>
         </main>
@@ -142,13 +184,16 @@
 
 <script>
 // @ is an alias to /src
-import roomTypes from "../../json/room-types.json";
+// import roomTypes from "../../json/room-types.json";
 import countries from "../../json/countries.json";
 
 import Logo from "../components/Logo";
 import FlipButton from "../components/Button";
 import FlipInputWithLabel from "../components/InputWithLabel";
 import FlipSelectInputWithLabel from "../components/SelectInputWithLabel";
+
+import { GET_ROOM_TYPES, GET_CURRENT_ACADEMIC_YEAR } from '@/graphql/queries'
+import { CREATE_RESIDENT, CREATE_BOOKING } from '@/graphql/mutations'
 
 export default {
   name: "Home",
@@ -158,22 +203,38 @@ export default {
     FlipInputWithLabel,
     FlipSelectInputWithLabel
   },
+  apollo: {
+    room_types: {
+      query: GET_ROOM_TYPES,
+      error (error) {
+        this.error = JSON.stringify(error.message)
+      }
+    },
+    academic_year: {
+      query: GET_CURRENT_ACADEMIC_YEAR,
+      error (error) {
+        this.error = JSON.stringify(error.message)
+      }
+    }
+  },
   data: () => ({
+    error: null,
+    bookingSubmitted: false,
     country: "",
-    roomTypes,
+    room_types: [],
+    academic_year: null,
     countries,
     resident: {
       fullname: null,
       email: null,
       telephone: null,
       nationality: null,
-      instituition: null,
+      institution: null,
       level: null,
     },
     booking: {
-      room_type: null,
+      roomType: null,
       duration: null,
-      academic_year_id: null
     },
     duration: [
       {
@@ -216,9 +277,80 @@ export default {
     ]
   }),
   methods: {
-    sendBookingRequest() {
-      console.log("Booking request sent")
+    async storeBookingRequest() {
+      const residentId = await this.addResident(this.resident)
+      if (!residentId) {
+        console.log("Failed", )
+      }
+
+      let bookingId;
+      const academicYear = this.currentAcademicYear
+      const { roomType, duration} = this.booking;
+
+      await this.$apollo.mutate({
+       mutation: CREATE_BOOKING,
+       variables: {
+         residentId,
+         roomType,
+         duration,
+         academicYear
+       },
+       update: (cache, { data: { insert_bookings } }) => {
+         bookingId = insert_bookings.returning[0].id
+       },
+     });
+
+     if (!bookingId) {
+       this.error = "There seems to be an issue on our end. Kindly notify as to fix it"
+     }
+
+     this.bookingSubmitted = true
+     window.scrollTo(0,0)
+    },
+
+    async addResident(residentDetails) {
+      const { fullname, email, telephone, nationality, institution, level } = residentDetails;
+      
+      if (!fullname || !email || !telephone || !nationality || !institution || !level) return null
+      
+      let newResidentId;
+
+      await this.$apollo.mutate({
+        mutation: CREATE_RESIDENT,
+        variables: {
+          fullname,
+          email,
+          telephone,
+          nationality,
+          institution,
+          level
+        },
+        update: (cache, { data: { insert_residents } }) => {
+          newResidentId = insert_residents.returning[0].id
+        },
+      });
+      return newResidentId
     }
+  },
+  computed: {
+    roomTypes: function() {
+      return this.room_types.map((type) => {
+        return {
+          key: type.id,
+          label: type.title,
+          value: type.id
+        }
+      })
+    },
+    feeEstimate() {
+      if (!this.booking.roomType || !this.booking.duration) return 0.00
+      const roomTypeDetails = this.room_types.filter((room) => room.id === this.booking.roomType)
+      const roomDuration = `amount_${this.booking.duration.replace(/ /g,"_")}_duration`
+      return roomTypeDetails[0][roomDuration].substr(1)
+    },
+    currentAcademicYear() {
+      return this.academic_year[0].id
+    } 
   }
 };
 </script>

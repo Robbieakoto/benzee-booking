@@ -1,0 +1,9 @@
+mutation createResident($fullname: String!, $nationality: String!, $email: String!, $telephone: String!, $level: String!, $institution: String!) {
+  insert_residents(objects: {name: $fullname, nationality: $nationality, telephone: $telephone, level: $level, institution: $institution, email: $email}) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+

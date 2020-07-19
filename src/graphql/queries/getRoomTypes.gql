@@ -1,0 +1,8 @@
+query getRoomTypes {
+  room_types {
+    id
+    title
+    amount_9_months_duration
+    amount_12_months_duration
+  }
+}

@@ -1,0 +1,9 @@
+
+mutation createBooking($academicYear: uuid, $duration: String!, $roomType: uuid!, $residentId: uuid!) {
+  insert_bookings(objects: {academic_year_id: $academicYear, duration: $duration, room_type_id: $roomType, resident_id: $residentId}) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
