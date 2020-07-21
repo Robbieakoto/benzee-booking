@@ -5,11 +5,17 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "lambda:serve": "netlify-lambda serve ./functions/lambdas",
+    "lambda:build": "netlify-lambda build ./functions/lambdas"
   },
   "dependencies": {
     "@tailwindcss/ui": "^0.3.0",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
+    "dotenv": "^8.2.0",
+    "netlify-lambda": "^2.0.0",
     "tailwindcss": "^1.4.6",
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.0-beta.11",
