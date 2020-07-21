@@ -156,16 +156,16 @@
 
               <div class="rounded-md shadow mt-4">
                 <flip-button label="Book a room" @button-clicked="storeBookingRequest()">
-                  <svg
-                    class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
+                  <svg 
+                    class="icon-book-open h-6 w-6 text-indigo-300 group-hover:text-indigo-400 transition ease-in-out duration-150"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
                     fill="currentColor"
-                    viewBox="0 0 20 20"
                   >
-                    <path
-                      fill-rule="evenodd"
-                      d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                      clip-rule="evenodd"
-                    />
+                    <g>
+                      <path fill-rule="evenodd" class="secondary" d="M12 21a2 2 0 0 1-1.41-.59l-.83-.82A2 2 0 0 0 8.34 19H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4a5 5 0 0 1 4 2v16z"/>
+                      <path class="primary" d="M12 21V5a5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82A2 2 0 0 1 12 21z"/>
+                    </g>
                   </svg>
                 </flip-button>
               </div>

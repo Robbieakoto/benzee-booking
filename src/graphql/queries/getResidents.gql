@@ -1,0 +1,15 @@
+query getResidents {
+  residents {
+    id
+    institution
+    level
+    name
+    telephone
+    bookings {
+      duration
+      room {
+        name
+      }
+    }
+  }
+}
