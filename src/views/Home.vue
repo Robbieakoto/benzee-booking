@@ -15,7 +15,13 @@
           class="flex items-center justify-between relative pt-8 md:pt-16 px-0 lg:px-10 xl:px-20 lg:pb-8"
         >
           <logo></logo>
-          <div>
+          <div v-if="userIsLoggedIn">
+            <router-link
+              :to="{name: 'dashboard'}"
+              class="text-sm font-medium text-gray-500 focus:outline-none focus:underline"
+            >Dashboard →</router-link>
+          </div>
+          <div v-else>
             <router-link
               :to="{name: 'login'}"
               class="text-sm font-medium text-gray-500 focus:outline-none focus:underline"
@@ -191,6 +197,7 @@ import Logo from "../components/Logo";
 import FlipButton from "../components/Button";
 import FlipInputWithLabel from "../components/InputWithLabel";
 import FlipSelectInputWithLabel from "../components/SelectInputWithLabel";
+import { isLoggedIn } from '@/utils/auth'
 
 import { GET_ROOM_TYPES, GET_CURRENT_ACADEMIC_YEAR } from '@/graphql/queries'
 import { CREATE_RESIDENT, CREATE_BOOKING } from '@/graphql/mutations'
@@ -350,7 +357,10 @@ export default {
     },
     currentAcademicYear() {
       return this.academic_year[0].id
-    } 
+    },
+    userIsLoggedIn() {
+      return isLoggedIn()
+    }
   }
 };
 </script>

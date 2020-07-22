@@ -9,6 +9,6 @@ export const requireAuth = (to, from, next) => {
   }
 }
 
-function isLoggedIn () {
+export function isLoggedIn () {
   return !!window.localStorage.getItem('apollo-token') 
 }

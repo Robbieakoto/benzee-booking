@@ -95,6 +95,7 @@ import FlipButton from "@/components/Button";
 
 import { LOGIN_USER } from '@/graphql/queries'
 import { onLogin } from '@/vue-apollo'
+import { isLoggedIn } from '@/utils/auth'
 
 export default {
   name: "Login",
@@ -158,6 +159,11 @@ export default {
         console.log('%cError on user login', 'color: orange;', error.message)
       }
       
+    }
+  },
+  mounted() {
+    if (isLoggedIn()) {
+      this.$router.push({ path: '/dashboard' })
     }
   }
 };
