@@ -22,7 +22,7 @@
                 Full name
               </dt>
               <dd class="mt-1 text-sm leading-5 font-medium text-gray-900 sm:mt-0 sm:col-span-2">
-                Bafour Adu Boampong
+               {{residents.name}}
               </dd>
             </div>
             <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -90,11 +90,18 @@
 
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
+import { GET_RESIDENTS } from '@/graphql/queries'
+
 
 export default {
   name: "RoomList",
   components: {
     DashboardLayout
+  },
+  apollo: {
+    residents: {
+      query: GET_RESIDENTS
+    }
   }
 };
 </script>

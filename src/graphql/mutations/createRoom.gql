@@ -1,0 +1,8 @@
+mutation createRoom($roomName: String!, $roomType: uuid!) {
+  insert_rooms(objects: {name: $roomName, room_type_id: $roomType}) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}

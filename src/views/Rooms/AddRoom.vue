@@ -16,6 +16,7 @@
                     input-type="text"
                     input-name="room_name"
                     :required="true"
+                    v-model="room.name"
                     ></flip-input-with-label>
 
                    <flip-select-input-with-label
@@ -25,19 +26,12 @@
                     option-title="Choose Room Type"
                     :required="true"
                     :options="roomTypes"
+                    v-model="room.type"
                     ></flip-select-input-with-label>
-
-                    <flip-input-with-label
-                    class="mt-8 flex-shrink w-full inline-block relative"
-                    label-name="Number of Occupants"
-                    input-type="number"
-                    input-name="number_of_occupants"
-                    :required="true"
-                    ></flip-input-with-label>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                        <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo ease-in-out duration-150 sm:text-sm sm:leading-5">
+                        <button v-on:click="addRoom()" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo ease-in-out duration-150 sm:text-sm sm:leading-5">
                         Add a room
                         </button>
                     </span>
@@ -55,19 +49,71 @@
 
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
-import roomTypes from "../../../json/room-types";
 import FlipInputWithLabel from "../../components/InputWithLabel";
 import FlipSelectInputWithLabel from "../../components/SelectInputWithLabel";
+import {CREATE_ROOM} from '@/graphql/mutations'
+import { GET_ROOMS , GET_ROOM_TYPES} from '@/graphql/queries'
+
 
 export default {
-  name: "RoomList",
+  name: "AddRoom",
   components: {
     DashboardLayout,
     FlipInputWithLabel,
     FlipSelectInputWithLabel
   },
+  apollo: {
+    rooms: {
+      query: GET_ROOMS
+    },
+    room_types: {
+      query: GET_ROOM_TYPES
+    },
+  },
    data: () => ({
-    roomTypes
-   })
+    room_types: [],
+    room:{
+      name:null,
+      type:null,
+    }
+   }),
+   computed:{
+    roomTypes: function() {
+      return this.room_types.map((type) => {
+        return {
+          key: type.id,
+          label: type.title,
+          value: type.id
+        }
+      })
+    }
+   },
+   methods:{
+    async addRoom(){
+      const {name, type} = this.room;
+      
+      await this.$apollo.mutate({
+        mutation: CREATE_ROOM,
+        variables: {
+          roomName: name,
+          roomType: type
+        },
+        update: (cache, { data: { insert_rooms } }) => {
+          const data = cache.readQuery({
+             query: GET_ROOMS
+           });
+           const insertRoom = insert_rooms.returning;
+           data.todos.push(insertRoom[0]);
+           cache.writeQuery({
+             query: GET_ROOMS,
+             data
+           });
+          return insert_rooms
+       },
+      })
+      
+    }
+   }
+  
 };
 </script>

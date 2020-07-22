@@ -1,16 +1,12 @@
-query getBookings {
-    bookings {
+query getFiveBookings {
+    bookings(limit:5) {
         id
-        duration
         created_at
         is_paid
         resident {
           id
-          email
           name
           level
-          nationality
-          telephone
           institution
         }
     }
