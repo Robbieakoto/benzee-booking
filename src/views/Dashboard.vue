@@ -345,6 +345,9 @@ import DashboardLayout from "@/components/DashboardLayout.vue";
 
 export default {
   name: "Dashboard",
+  metaInfo: {
+    title: 'Dashboard'
+  },
   components: {
     DashboardLayout
   },

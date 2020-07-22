@@ -1,5 +1,6 @@
 const axios = require('axios');
 const bcrypt = require('bcryptjs');
+const crypto = require('crypto');
 
 require('dotenv').config()
 
@@ -73,12 +74,13 @@ exports.handler = async(event) => {
         body: JSON.stringify({
           success: false,
           accessToken: null,
-          message: "User credentials invalid",
+          message: "Wrong credentials provided",
         })
       };
     }
 
     // Generate token
+    const token = crypto.randomBytes(32).toString('hex')
     // Update user token field with token
 
     return {
@@ -89,7 +91,7 @@ exports.handler = async(event) => {
       statusCode: 200,
       body: JSON.stringify({
         success: true,
-        accessToken: "1234567"
+        accessToken: token
       })
     }
 

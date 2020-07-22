@@ -6,7 +6,9 @@ import './assets/css/tailwind.css'
 import './assets/fonts/Inter/inter.css'
 
 import { createProvider } from './vue-apollo'
+import VueMeta from 'vue-meta'
 
+Vue.use(VueMeta)
 Vue.config.productionTip = false
 
 new Vue({

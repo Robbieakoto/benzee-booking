@@ -207,13 +207,13 @@ export default {
     room_types: {
       query: GET_ROOM_TYPES,
       error (error) {
-        this.error = JSON.stringify(error.message)
+        this.error = JSON.stringify(error.message).split(': ')[1]
       }
     },
     academic_year: {
       query: GET_CURRENT_ACADEMIC_YEAR,
       error (error) {
-        this.error = JSON.stringify(error.message)
+        this.error = JSON.stringify(error.message).split(': ')[1]
       }
     }
   },
