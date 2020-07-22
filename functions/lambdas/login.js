@@ -80,7 +80,7 @@ exports.handler = async(event) => {
     }
 
     // Generate token
-    const token = crypto.randomBytes(32).toString('hex')
+    const token = crypto.randomBytes(64).toString('hex')
     // Update user token field with token
 
     return {

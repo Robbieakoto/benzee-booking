@@ -90,10 +90,11 @@
 </template>
 <script>
 // @ is an alias to /src
-import Logo from "../components/Logo";
-import FlipButton from "../components/Button";
+import Logo from "@/components/Logo";
+import FlipButton from "@/components/Button";
 
 import { LOGIN_USER } from '@/graphql/queries'
+import { onLogin } from '@/vue-apollo'
 
 export default {
   name: "Login",
@@ -144,16 +145,19 @@ export default {
       this.$apollo.queries.user_login.skip = false
       try {
         const response  = await this.$apollo.queries.user_login.refetch()
-        console.log()
+
         if (response.data.user_login.success) {
           //set token as cookie
           const token = response.data.user_login.accessToken
-          console.log(token)
+          onLogin(this.$apollo.provider.defaultClient, token)
+
+          this.$router.push({ path: '/dashboard' })
         }
       } catch (error) {
-        console.log(error)
+        this.$apollo.queries.user_login.skip = true
+        console.log('%cError on user login', 'color: orange;', error.message)
       }
-      this.$apollo.queries.user_login.skip = true
+      
     }
   }
 };

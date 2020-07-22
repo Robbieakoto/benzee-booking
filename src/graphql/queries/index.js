@@ -7,8 +7,6 @@ import userLogin from "./getLogin.gql"
 import getBookings from "./getBookings.gql"
 import getResidents from "./getResidents.gql"
 
-
-
 export const GET_ROOM_TYPES = gql`${getRoomTypes}`
 export const GET_ROOMS= gql `${getRooms}`
 export const GET_CURRENT_ACADEMIC_YEAR = gql`${getCurrentAcademicYear}`

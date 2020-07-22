@@ -42,7 +42,14 @@ const defaultOptions = {
   // cache: myCache
 
   // Override the way the Authorization header is set
-  // getAuth: (tokenName) => ...
+  getAuth: (tokenName) => {
+    const headers = {};
+     const token = window.localStorage.getItem(tokenName);
+     if (token) {
+       headers.authorization = `Bearer ${token}`;
+     }
+     return headers;
+  }
 
   // Additional ApolloClient options
   // apollo: { ... }
