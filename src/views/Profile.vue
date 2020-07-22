@@ -29,8 +29,7 @@
                 input-name="new_password"
                 :required="true"
                 ></flip-input-with-label>
-                <div class="mt-6">
-                <flip-button label="Update Password" class="mb-5">
+                <flip-button label="Update Password" class="mb-5 mt-5">
                     <svg
                     class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
                     fill="currentColor"
@@ -43,7 +42,23 @@
                     />
                     </svg>
                 </flip-button>
+
+                <div class="mt-6">
+                 <h1 class="text-gray-700 text-lg font-semibold">Settings</h1>
+                  <flip-select-input-with-label
+                    class="flex-shrink w-full inline-block relative"
+                    label-name="Academic Year"
+                    input-name="academic_year"
+                    option-title="Choose an acdemic year"
+                    :required="true"
+                    ></flip-select-input-with-label>
+                    <span class="mt-5 flex w-full rounded-md shadow-sm">
+                        <button type="button" class="w-full flex justify-center py-3 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out">
+                        Save Academic Year
+                        </button>
+                    </span>
                 </div>
+                
               </div>
           </div>
       </div>
@@ -55,7 +70,7 @@
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import FlipInputWithLabel from "../components/InputWithLabel";
 import FlipButton from "../components/Button";
-
+import FlipSelectInputWithLabel from "../components/SelectInputWithLabel";
 
 
 export default {
@@ -63,7 +78,8 @@ export default {
   components: {
     DashboardLayout,
     FlipInputWithLabel,
-    FlipButton
+    FlipButton,
+    FlipSelectInputWithLabel
     }
 };
 </script>

@@ -2,6 +2,8 @@ query getRoom {
   rooms {
     id
     name
+    last_updated
+    created_at
     room_type {
       title
       number_of_occupants

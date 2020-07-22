@@ -1,0 +1,7 @@
+query getPaidBookings {
+  bookings_aggregate {
+    aggregate {
+      count(distinct: false, columns: is_paid)
+    }
+  }
+}

@@ -39,7 +39,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "rooms-list" */ '../views/Rooms/RoomsList.vue')
   },
     {
-      path: '/room-details',
+      path: '/room-details/:roomId',
       name: 'room-details',
       beforeEnter: requireAuth,
       component: () => import(/* webpackChunkName: "rooms-details" */ '../views/Rooms/RoomDetails.vue')

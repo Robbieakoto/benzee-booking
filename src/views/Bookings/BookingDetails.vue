@@ -1,8 +1,9 @@
 <template>
   <dashboard-layout>
     <template v-slot:header>
-      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-        <h1 class="text-3xl font-bold leading-tight text-gray-900">Booking Details </h1>
+      <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:flex lg:items-center lg:justify-between">
+          <div class="flex-1 min-w-0">
+            <h1 class="text-3xl font-bold leading-tight text-gray-900">Booking Details </h1>
             <div class="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap">
                 <div v-if="bookings" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                 
@@ -17,10 +18,27 @@
                     <svg class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd" />
                     </svg>
-                    Submitted on January 9, 2020
+                    Submitted on {{bookingDate}}
                 </div>
                 </div>
+            </div>
           </div>
+            <div class="mt-5 flex flex-wrap lg:mt-0 lg:ml-4">
+              <span class="shadow-sm rounded-md pr-4 md:pr-0">
+                <router-link :to="{name: 'edit-room'}" class="inline-flex items-center px-4 py-2 bg-indigo-200 text-sm leading-5 font-medium rounded-md text-indigo-700 hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out">
+                  <!-- <svg class="-ml-1 mr-2 h-5 w-5 text-indigo-500" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                  </svg> -->
+                  Approve Request
+                </router-link>
+              </span>
+
+              <span class="sm:ml-3 shadow-sm rounded-md">
+                <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-200 text-sm leading-5 font-medium rounded-md text-red-700 hover:text-gray-500 focus:outline-none focus:shadow-outline-red focus:border-red-300 active:text-gray-800 active:bg-gray-50 transition duration-150 ease-in-out">
+                  Reject Request
+                </button>
+              </span>
+            </div>
       </div>
     </template>
 
@@ -115,11 +133,20 @@
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import { GET_BOOKING_DETAILS } from '@/graphql/queries'
+import moment from 'moment'
 
 export default {
   name: "BookingDetails",
   components: {
     DashboardLayout
+  },
+  data() {
+    return{
+      bookingId: null
+    }
+  },
+  mounted: function(){
+    this.bookingId = this.$route.params.bookingId
   },
   apollo: {
     bookings: {
@@ -134,20 +161,14 @@ export default {
       }
     }
   },
-  data() {
-    return{
-      bookingId: null
-    }
-  },
-  mounted: function(){
-    this.bookingId = this.$route.params.bookingId
-  },
   computed: {
     duration(){
       const duration = this.bookings[0].duration
       return this.bookings[0].room_type[`amount_${duration.replace(/ /g, "_")}_duration`]
+    },
+    bookingDate(){
+      return moment(this.bookings.created_at).format("MMMM DD YYYY")
     }
-
   }
 };
 </script>
