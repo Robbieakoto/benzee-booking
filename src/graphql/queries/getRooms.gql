@@ -1,0 +1,10 @@
+query getRoom {
+  rooms {
+    id
+    name
+    room_type {
+      title
+      number_of_occupants
+    }
+  }
+}

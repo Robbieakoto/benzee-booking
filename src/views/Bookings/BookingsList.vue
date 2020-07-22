@@ -5,8 +5,9 @@
         <h1 class="text-3xl font-bold leading-tight text-gray-900">Bookings</h1>
       </div>
     </template>
-
+  
     <template v-slot:content>
+    
       <div class="flex flex-col m-2 sm:m-0">
         <div class="py-10 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div
@@ -27,19 +28,22 @@
                   <th class="px-6 py-3 border-b border-gray-200 bg-gray-50"></th>
                 </tr>
               </thead>
+             
               <tbody class="bg-white">
-                <tr>
+                <tr v-for="booking in bookings" :key="booking.id">
                   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                     <div class="flex items-center">
                       <div class="ml-4">
-                        <div class="text-sm leading-5 font-medium text-gray-900">Bernard Lane</div>
-                        <div class="text-sm leading-5 text-gray-500">1st Year - Lancaster University</div>
+                        <div class="text-sm leading-5 font-medium text-gray-900">
+                         <p>{{booking.resident.name}}</p> 
+                        </div>
+                        <div class="text-sm leading-5 text-gray-500"><p>{{booking.resident.level}} - {{booking.resident.institution}}</p></div>
                       </div>
                     </div>
                   </td>
                   <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="text-sm leading-5 text-gray-900">Single Room</div>
-                    <div class="text-sm leading-5 text-gray-500">9 months</div>
+                    <div class="text-sm leading-5 text-gray-900"><p>Single Room</p></div>
+                    <div class="text-sm leading-5 text-gray-500"><p>{{booking.duration}}</p></div>
                   </td>
                   <td
                     class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500"
@@ -48,7 +52,24 @@
                       Submitted on
                       <time datetime="2020-01-07">January 7, 2020</time>
                     </div>
-                    <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                    <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                      <svg
+                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
+                        />
+                        <path
+                          fill-rule="evenodd"
+                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                          clip-rule="evenodd"
+                        />
+                      </svg>
+                      Paid
+                    </div>
+                    <div v-else class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
                         class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
                         viewBox="0 0 20 20"
@@ -64,7 +85,7 @@
                         />
                       </svg>
                       Pending Payment
-                    </div>
+                    </div> 
                   </td>
                   <td
                     class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
@@ -73,107 +94,6 @@
                       class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
                     >
                       <router-link :to="{name: 'booking-details'}">
-                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                            fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                      </router-link>
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="flex items-center">
-                      <div class="ml-4">
-                        <div class="text-sm leading-5 font-medium text-gray-900">Joshua Addai</div>
-                        <div
-                          class="text-sm leading-5 text-gray-500"
-                        >Foundation - Lancaster University</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="text-sm leading-5 text-gray-900">Director</div>
-                    <div class="text-sm leading-5 text-gray-500">Human Resources</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                    <div class="text-sm leading-5 text-gray-900">
-                      Submitted on
-                      <time datetime="2020-01-07">January 7, 2020</time>
-                    </div>
-                    <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                      <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                          clip-rule="evenodd"
-                        />
-                      </svg>
-                      Completed
-                    </div>
-                  </td>
-                  <td
-                    class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
-                  >
-                    <span
-                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
-                    >
-                      <router-link :to="{name: 'room-details'}">
-                        <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                            fill-rule="evenodd"
-                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                            clip-rule="evenodd"
-                          />
-                        </svg>
-                      </router-link>
-                    </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="px-6 py-4 whitespace-no-wrap">
-                    <div class="flex items-center">
-                      <div class="ml-4">
-                        <div class="text-sm leading-5 font-medium text-gray-900">Bernard Lane</div>
-                        <div class="text-sm leading-5 text-gray-500">bernardlane@example.com</div>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap">
-                    <div class="text-sm leading-5 text-gray-900">Director</div>
-                    <div class="text-sm leading-5 text-gray-500">Human Resources</div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-500">
-                    <div class="text-sm leading-5 text-gray-900">
-                      Submitted on
-                      <time datetime="2020-01-07">January 7, 2020</time>
-                    </div>
-                    <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                      <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-500"
-                        fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
-                        />
-                      </svg>
-                      Awaiting Room Assignment
-                    </div>
-                  </td>
-                  <td class="px-6 py-4 whitespace-no-wrap text-right text-sm leading-5 font-medium">
-                    <span
-                      class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
-                    >
-                      <router-link :to="{name: 'room-details'}">
                         <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                           <path
                             fill-rule="evenodd"
@@ -220,11 +140,17 @@
 </template>
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
+import { GET_BOOKINGS } from '@/graphql/queries'
 
 export default {
   name: "BookingList",
   components: {
     DashboardLayout
+  },
+  apollo: {
+    bookings: {
+      query: GET_BOOKINGS
+    }
   }
 };
 </script>
