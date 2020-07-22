@@ -1,0 +1,6 @@
+query userLogin($email: String!, $password: String!) {
+  user_login(email: $email, password: $password) {
+    accessToken
+    success
+  }
+}

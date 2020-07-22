@@ -307,6 +307,9 @@ import { GET_FIVE_BOOKINGS } from '@/graphql/queries'
 
 export default {
   name: "Dashboard",
+  metaInfo: {
+    title: 'Dashboard'
+  },
   components: {
     DashboardLayout
   },

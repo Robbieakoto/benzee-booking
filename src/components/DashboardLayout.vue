@@ -85,7 +85,7 @@
                       role="menuitem"
                     >Settings</router-link>
                     <router-link
-                      :to="{name: 'login'}"
+                      :to="{name: 'logout'}"
                       class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       role="menuitem"
                     >Sign out</router-link>
@@ -158,7 +158,7 @@
                     <span class="rounded absolute inset-0 bg-teal-200 opacity-0"></span>
                     <span class="relative">Settings</span>
                   </router-link>
-                  <router-link :to="{name: 'login'}" class="mt-3 px-2 -mx-2 py-1 transition duration-200 ease-in-out relative block hover:translate-x-2px hover:text-gray-900 text-gray-600 font-medium">
+                  <router-link :to="{name: 'logout'}" class="mt-3 px-2 -mx-2 py-1 transition duration-200 ease-in-out relative block hover:translate-x-2px hover:text-gray-900 text-gray-600 font-medium">
                     <span class="rounded absolute inset-0 bg-teal-200 opacity-0"></span>
                     <span class="relative">Sign out</span>
                   </router-link>

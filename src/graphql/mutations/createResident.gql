@@ -6,4 +6,3 @@ mutation createResident($fullname: String!, $nationality: String!, $email: Strin
     }
   }
 }
-
