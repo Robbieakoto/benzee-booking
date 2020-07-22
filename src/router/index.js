@@ -67,7 +67,7 @@ Vue.use(VueRouter)
   component: () => import(/* webpackChunkName: "bookings-list" */ '../views/Bookings/BookingsList.vue')
   },
   {
-    path: '/booking-details',
+    path: '/booking-details/:bookingId',
     name: 'booking-details',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -83,7 +83,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "residents" */ '../views/Residents/ResidentsList.vue')
   },
   {
-    path: '/resident-details',
+    path: '/resident-details/:residentId',
     name: 'resident-details',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
