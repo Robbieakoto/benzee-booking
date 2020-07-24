@@ -87,12 +87,6 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "residents" */ '../views/Settings.vue')
   },
   {
-    path: '/profile',
-    name: 'profile',
-    beforeEnter: requireAuth,
-    component: () => import(/* webpackChunkName: "residents" */ '../views/Profile.vue')
-  },
-  {
     path: '/payment-details',
     name: 'payment-details',
     beforeEnter: requireAuth,

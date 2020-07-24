@@ -1,5 +1,5 @@
 query getRoomDetails($id: uuid!) {
-    rooms(where: {id: {_eq: $id}}) {
+  rooms(where: {id: {_eq: $id}}) {
     id
     name
     last_updated

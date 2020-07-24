@@ -11,6 +11,7 @@ import getUnPaidBookings from "./getUnPaidBookings.gql"
 import getBookingDetails from "./getBookingDetails.gql"
 import getResidents from "./getResidents.gql"
 import getFiveBookings from "./getFiveBookings.gql"
+import getDashboardStats from "./getDashboardStats.gql"
 
 export const GET_ROOM_TYPES = gql`${getRoomTypes}`
 export const GET_ROOMS= gql `${getRooms}`
@@ -23,4 +24,5 @@ export const GET_UNPAID_BOOKINGS = gql `${getUnPaidBookings}`
 export const GET_FIVE_BOOKINGS = gql `${getFiveBookings}`
 export const GET_BOOKING_DETAILS = gql `${getBookingDetails}`
 export const GET_RESIDENTS = gql`${getResidents}`
+export const GET_DASHBOARD_STATS = gql `${getDashboardStats}`
 

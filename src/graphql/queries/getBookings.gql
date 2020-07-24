@@ -4,6 +4,7 @@ query getBookings {
         duration
         created_at
         is_paid
+        is_available
         resident {
           id
           email

@@ -12,7 +12,7 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{unPaidBookings}}</span>
+                <span class="text-5xl">{{unpaid_bookings.aggregate.count}}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Pending Requests</div>
             </div>
@@ -20,18 +20,16 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{paidBookings}}</span>
+                <span class="text-5xl">{{paid_bookings.aggregate.count}}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Paid Bookings</div>
             </div>
           </div>
           <div class="lg:w-1/3 text-center py-8">
-            <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{totalNumberOfRooms}}</span>
+                <span class="text-5xl">{{rooms.aggregate.count}}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Rooms</div>
-            </div>
           </div>
         </div>
       </div>
@@ -304,8 +302,7 @@
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import { GET_FIVE_BOOKINGS } from '@/graphql/queries';
-import { GET_ROOMS } from '@/graphql/queries';
-
+import { GET_DASHBOARD_STATS} from '@/graphql/queries';
 
 import moment from 'moment'
 
@@ -322,8 +319,14 @@ export default {
     bookings: {
       query: GET_FIVE_BOOKINGS
     },
+    unpaid_bookings: {
+      query: GET_DASHBOARD_STATS
+    },
+    paid_bookings: {
+      query: GET_DASHBOARD_STATS
+    },
     rooms: {
-      query: GET_ROOMS
+      query: GET_DASHBOARD_STATS
     }
   },
   methods:{
@@ -335,18 +338,7 @@ export default {
     bookingDate: function(){
       return moment(this.bookings.created_at).format("MMMM DD YYYY")
     },
-    paidBookings:function(){
-    const paidBookings = this.bookings.filter((booking) => booking.is_paid == !this.bookings.is_paid)
-      return paidBookings.length
-    },
-    unPaidBookings:function(){
-    const unPaidBookings = this.bookings.filter((booking) => booking.is_paid == this.bookings.is_paid)
-    return unPaidBookings.length
-    },
-    totalNumberOfRooms:function(){
-      console.log(this.rooms.length)
-      return this.rooms.length
-    }
+     
   },
   data(){
     return{
