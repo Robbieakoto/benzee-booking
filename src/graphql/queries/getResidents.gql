@@ -1,5 +1,5 @@
 query getResidents {
-  residents {
+  residents(where: {is_approved: {_eq: true}}) {
     id
     institution
     level

@@ -1,5 +1,5 @@
 query getDashboardStats {
-  unpaid_bookings: bookings_aggregate(where: {is_deleted: {_eq: false},is_paid: {_eq: false}, room_id: {_is_null: true}}) {
+  pending_approval: bookings_aggregate(where: {is_deleted: {_eq: false},is_available: {_eq: false}}) {
     aggregate {
       count
     }

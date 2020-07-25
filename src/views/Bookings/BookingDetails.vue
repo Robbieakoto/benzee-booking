@@ -40,64 +40,52 @@
     </template>
 
     <template v-slot:content>
-        <div v-if="roomAssigned" class="mt-2 mb-6 bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
-          <div class="flex">
-            <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-            <div>
-              <p class="font-bold">Room has been assigned</p>
-              <br>
-            </div>
+      <div v-if="roomAssigned" class="mt-2 mb-6 bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+        <div class="flex">
+          <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+          <div>
+            <p class="font-bold">Room has been assigned</p>
+            <br>
           </div>
         </div>
+      </div>
 
-        
-        <div v-if="bookingApproved" class="my-6 bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
-          <div class="flex">
-            <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
-            <div>
-              <p class="font-bold">Booking Request Approved!</p>
-              <p class="text-sm">An email notification has been sent out to <b>{{bookingDetails.resident.email}}</b> to make payment</p>
-            </div>
+      <div v-if="bookingApproved" class="my-6 bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
+        <div class="flex">
+          <div class="py-1"><svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+          <div>
+            <p class="font-bold">Booking Request Approved!</p>
+            <p class="text-sm">An email notification has been sent out to <b>{{bookingDetails.resident.email}}</b> to make payment</p>
           </div>
         </div>
+      </div>
 
-      <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div v-if="booking[0].is_available && bookingDetails.is_paid" class="my-4 mx-4 md:flex transform transition duration-150 ease-in-out" aria-labelledby="modal-headline">
+        <flip-select-input-with-label
+          class="md:mr-6 md:w-2/3"
+          input-name="room"
+          option-title="Assign booking a room"
+          :required="true"
+          :options="roomsList"
+          v-model="room"
+        ></flip-select-input-with-label>
+        <button v-on:click="assignRoom()" type="submit" class="my-4 md:my-10 w-full md:w-1/3 justify-center py-3 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out">
+          Assign Room
+        </button>
+      </div>
+
+      <div class="bg-white shadow overflow-hidden sm:rounded-lg mx-4">
         <div v-if="!$apollo.queries.booking.loading" class="px-4 py-5 border-b border-gray-200 sm:px-6">
           <h3 class="text-lg leading-6 font-medium text-gray-900">
             Booking Details
             <span v-if="!bookingDetails.is_available" class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
               Pending Approval
             </span>
-            <span v-if="bookingDetails.is_available && !bookingDetails.is_paid" class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+            <span v-if="bookingDetails.is_available && !bookingDetails.is_paid" class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-teal-100 text-teal-800">
               Pending Payment
             </span>
-             <span v-if="booking[0].is_available && bookingDetails.is_paid" class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-              Payment Completed
-              <div class="py-6 mt-6 transform transition duration-150 ease-in-out" aria-labelledby="modal-headline">
-                    <div class="px-3 flex -mx-3">
-                      <h3 class="mr-6 font-semibold">Assign a Room</h3>
-                          <div class="w-1/3 mr-6 mt-1 flex-shrink inline-block relative">
-                            <label
-                              class="block mb-2 leading-none text-gray-800 font-medium"
-                            >Choose a Room</label>
-                            <select
-                              aria-label="Type"
-                              class="form-select shadow-sm block appearance-none text-gray-600 w-full bg-white border border-gray-300 px-4 pr-12 py-3 rounded"
-                              v-model="room"
-                            >
-                              <option disabled selected>Choose a Room</option>
-                                <option
-                                  v-for="room in rooms" :key="room.id" v-bind:value="room.id"
-                                >{{room.name}}</option>
-                            </select>
-                          </div>
-                        <div>
-                          <button v-on:click="assignRoom()" type="button" class="flex mt-7 justify-center py-3 px-4 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out">
-                            Assign Room
-                          </button>
-                        </div>
-                    </div>  
-                  </div>
+             <span v-if="booking[0].is_available && bookingDetails.is_paid" class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+              Awaiting Room Assignment
             </span>
           </h3>
           
@@ -179,12 +167,15 @@
 
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
+import FlipSelectInputWithLabel from "@/components/SelectInputWithLabel";
+
 import { GET_BOOKING_DETAILS } from '@/graphql/queries'
 import {APPROVE_BOOKING_REQUEST} from '@/graphql/mutations'
 import {DECLINE_BOOKING_REQUEST} from '@/graphql/mutations'
 import { GET_BOOKINGS } from '@/graphql/queries'
 import { GET_ROOMS } from '@/graphql/queries'
 import {ASSIGN_ROOM} from '@/graphql/mutations'
+import {UPDATE_RESIDENT} from '@/graphql/mutations'
 
 
 import moment from 'moment'
@@ -193,6 +184,7 @@ export default {
   name: "BookingDetails",
   components: {
     DashboardLayout,
+    FlipSelectInputWithLabel
   },
    mounted: function(){
     this.bookingId = this.$route.params.bookingId
@@ -251,7 +243,6 @@ export default {
       })
     },
     async declineRequest(){
-
      await this.$apollo.mutate({
         mutation: DECLINE_BOOKING_REQUEST,
         variables:{
@@ -263,35 +254,52 @@ export default {
             const data = cache.readQuery({
               query: GET_BOOKINGS
             });
+            const updatedBooking = data.bookings.find(booking => booking.id === this.bookingId);
+            updatedBooking.is_deleted = true
             cache.writeQuery({
               query: GET_BOOKINGS,
               data
             })
-            this.roomAssigned = true
             return update_bookings    
            } 
         }
       })
     },
     async assignRoom(){
-      const room = this.room
-      
       await this.$apollo.mutate({
         mutation: ASSIGN_ROOM,
         variables:{
           id:this.bookingId,
-          roomId: room
+          roomId: this.room
         },
-        update:(cache, {data: {update_bookings_by_pk}}) =>{
+        update:async (cache, {data: {update_bookings_by_pk}}) =>{
+          // update resident status
+          await this.updateResidentStatus(this.bookingDetails.resident.id)
           const data = cache.readQuery({
               query: GET_BOOKINGS
           });
+          const updatedBooking = data.bookings.find(booking => booking.id === this.bookingId);
+          updatedBooking.roomId = this.room
           cache.writeQuery({
               query: GET_BOOKINGS,
               data
           })
-          alert("room assigned")
+          this.roomAssigned = true
           return update_bookings_by_pk
+        }
+      })
+    },
+    async updateResidentStatus(residentId){
+      await this.$apollo.mutate({
+        mutation: UPDATE_RESIDENT,
+        variables:{
+          id:residentId,
+          status: true
+        },
+        update:(cache, {data: {update_residents}}) =>{
+         if (update_residents.affected_rows ) {
+           return update_residents
+           } 
         }
       })
     }
@@ -308,7 +316,16 @@ export default {
     bookingDetails() {
       if (this.$apollo.queries.booking.loading) return {}
       return this.booking[0]
-    }
+    },
+    roomsList: function() {
+      return this.rooms.map((room) => {
+        return {
+          key: room.id,
+          label: room.name,
+          value: room.id
+        }
+      })
+    },
   },
  
 };
