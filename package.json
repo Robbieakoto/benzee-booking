@@ -10,6 +10,7 @@
     "lambda:build": "netlify-lambda build ./functions/lambdas"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.2.2",
     "@tailwindcss/ui": "^0.3.0",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
@@ -21,7 +22,8 @@
     "vue": "^2.6.11",
     "vue-apollo": "^3.0.0-beta.11",
     "vue-meta": "^2.4.0",
-    "vue-router": "^3.3.4"
+    "vue-router": "^3.3.4",
+    "webpack-node-externals": "^2.5.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
