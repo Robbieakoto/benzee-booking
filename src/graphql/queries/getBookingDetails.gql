@@ -1,0 +1,23 @@
+query getBookingDetails($id: uuid!) {
+  booking: bookings(where: {id: {_eq: $id}}) {
+    id
+    duration
+    created_at
+    is_paid
+    is_available
+    resident {
+        id
+        email
+        name
+        level
+        nationality
+        telephone
+        institution
+    }
+    room_type {
+      title
+      amount_12_months_duration
+      amount_9_months_duration
+    }
+  }
+}

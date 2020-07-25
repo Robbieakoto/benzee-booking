@@ -1,0 +1,17 @@
+query getDashboardStats {
+  unpaid_bookings: bookings_aggregate(where: {is_paid: {_eq: false}}) {
+    aggregate {
+      count
+    }
+  }
+  paid_bookings: bookings_aggregate(where: {is_paid: {_eq: true}}) {
+    aggregate {
+      count
+    }
+  }
+  rooms: rooms_aggregate {
+    aggregate {
+      count
+    }
+  }
+}

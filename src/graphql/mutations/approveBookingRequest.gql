@@ -1,0 +1,5 @@
+mutation approveBookingRequest($id: uuid!, $is_available: Boolean!){
+  update_bookings(where: {id: {_eq: $id}, is_available: {_eq: false}}, _set: {is_available: $is_available}) {
+    affected_rows
+  }
+}

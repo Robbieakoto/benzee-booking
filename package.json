@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
+    "moment": "^2.27.0",
     "netlify-lambda": "^2.0.0",
     "tailwindcss": "^1.4.6",
     "vue": "^2.6.11",

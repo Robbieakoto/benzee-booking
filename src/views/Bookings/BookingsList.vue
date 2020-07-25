@@ -7,7 +7,7 @@
     </template>
   
     <template v-slot:content>
-    
+
       <div class="flex flex-col m-2 sm:m-0">
         <div class="py-10 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
           <div
@@ -50,7 +50,7 @@
                   >
                     <div class="text-sm leading-5 text-gray-900">
                       Submitted on
-                      <time datetime="2020-01-07">January 7, 2020</time>
+                      <time>{{bookingDate}}</time>
                     </div>
                     <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
@@ -93,7 +93,7 @@
                     <span
                       class="inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-200 text-green-800"
                     >
-                      <router-link :to="{name: 'booking-details'}">
+                      <router-link :to="{name:'booking-details', params:{bookingId: booking.id }}">
                         <svg class="h-6 w-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                           <path
                             fill-rule="evenodd"
@@ -141,6 +141,7 @@
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import { GET_BOOKINGS } from '@/graphql/queries'
+import moment from 'moment'
 
 export default {
   name: "BookingList",
@@ -150,6 +151,11 @@ export default {
   apollo: {
     bookings: {
       query: GET_BOOKINGS
+    }
+  },
+  computed:{
+    bookingDate: function(){
+      return moment(this.bookings.created_at).format("MMMM DD YYYY")
     }
   }
 };

@@ -9,22 +9,51 @@
     <template v-slot:content>
       <div class="flex items-center justify-center py-10 px-4 lg:px-8">
           <div class="bg-white rounded-lg overflow-hidden shadow transform sm:max-w-lg sm:w-full transition duration-150 ease-in-out" aria-labelledby="modal-headline">
-              <div class="bg-white px-4 sm:pb-10">
+              <div class="px-10 py-8 sm:pb-10">
+                <flip-input-with-label
+                class="mt-2 flex-shrink w-full inline-block relative"
+                label-name="Current Password"
+                input-type="password"
+                input-name="password"
+                :required="true"
+                ></flip-input-with-label>
+                <flip-input-with-label
+                class="mt-6 flex-shrink w-full inline-block relative"
+                label-name="New Password"
+                input-type="password"
+                input-name="new_password"
+                :required="true"
+                ></flip-input-with-label>
+                <flip-button label="Update Password" class="mb-5 mt-5">
+                    <svg
+                    class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    >
+                    <path
+                        fill-rule="evenodd"
+                        d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                        clip-rule="evenodd"
+                    />
+                    </svg>
+                </flip-button>
+
+                <div class="mt-6">
+                 <h1 class="text-gray-700 text-lg font-semibold">Settings</h1>
                   <flip-select-input-with-label
-                  class="mt-2 flex-shrink w-full inline-block relative px-2 mb-5 md:mb-0"
-                  label-name="Academic Year"
-                  input-name="academic_year"
-                  option-title="Choose an acdemic year"
-                  :required="true"
-                  :options="roomTypes"
-                  ></flip-select-input-with-label>
-              </div>
-              <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                  <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">
-                      <button type="button" class="inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 text-base leading-6 font-medium text-white shadow-sm bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo ease-in-out duration-150 sm:text-sm sm:leading-5">
-                      Save Academic Year
-                      </button>
-                  </span>
+                    class="flex-shrink w-full inline-block relative"
+                    label-name="Academic Year"
+                    input-name="academic_year"
+                    option-title="Choose an acdemic year"
+                    :required="true"
+                    ></flip-select-input-with-label>
+                    <span class="mt-5 flex w-full rounded-md shadow-sm">
+                        <button type="button" class="w-full flex justify-center py-3 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out">
+                        Save Academic Year
+                        </button>
+                    </span>
+                </div>
+                
               </div>
           </div>
       </div>
@@ -35,12 +64,16 @@
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import FlipSelectInputWithLabel from "../components/SelectInputWithLabel";
+import FlipInputWithLabel from "../components/InputWithLabel";
+import FlipButton from "../components/Button";
 
 export default {
   name: "RoomList",
   components: {
     DashboardLayout,
-    FlipSelectInputWithLabel
+    FlipSelectInputWithLabel,
+    FlipInputWithLabel,
+    FlipButton
   }
 };
 </script>
