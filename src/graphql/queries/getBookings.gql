@@ -1,5 +1,5 @@
 query getBookings {
-    bookings {
+    bookings(where: {is_deleted: {_eq: false},is_paid: {_eq: false}, room_id: {_is_null: true}}) {
         id
         duration
         created_at

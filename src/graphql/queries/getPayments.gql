@@ -1,0 +1,17 @@
+query getPaidBookings{
+    payments: bookings(where: {is_paid: {_eq: true}}, limit: 5) {
+        id
+        duration
+        resident {
+            institution
+            level
+            name
+            telephone
+            email
+        }
+        room_type {
+            amount_12_months_duration
+            amount_9_months_duration
+        }
+    }
+}

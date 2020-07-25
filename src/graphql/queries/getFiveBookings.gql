@@ -1,14 +1,15 @@
 query getFiveBookings {
-    bookings(limit:5) {
+  bookings(limit:5) {
+      id
+      created_at
+      is_paid
+      resident {
         id
-        created_at
-        is_paid
-        resident {
-          id
-          name
-          level
-          institution
-        }
-    }
+        name
+        level
+        institution
+      }
+  }
+  
 }
 

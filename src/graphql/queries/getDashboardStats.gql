@@ -1,10 +1,10 @@
 query getDashboardStats {
-  unpaid_bookings: bookings_aggregate(where: {is_paid: {_eq: false}}) {
+  unpaid_bookings: bookings_aggregate(where: {is_deleted: {_eq: false},is_paid: {_eq: false}, room_id: {_is_null: true}}) {
     aggregate {
       count
     }
   }
-  paid_bookings: bookings_aggregate(where: {is_paid: {_eq: true}}) {
+  paid_bookings: bookings_aggregate(where: {is_deleted: {_eq: false}, is_paid: {_eq: true}}) {
     aggregate {
       count
     }
