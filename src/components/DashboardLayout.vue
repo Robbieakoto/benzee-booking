@@ -142,13 +142,9 @@
               </router-link>
             </div>
             <div class="mb-8">
-              <h5 class="mb-3 lg:mb-2 text-gray-500 uppercase tracking-wide font-bold text-sm lg:text-xs">Profile</h5>
+              <h5 class="mb-3 lg:mb-2 text-gray-500 uppercase tracking-wide font-bold text-sm lg:text-xs">Other</h5>
                 <ul>
                   <li class="mb-3 lg:mb-1">
-                  <router-link :to="{name: 'profile'}" class="px-2 -mx-2 py-1 transition duration-200 ease-in-out relative block hover:translate-x-2px hover:text-gray-900 text-gray-600 font-medium">
-                    <span class="rounded absolute inset-0 bg-teal-200 opacity-0"></span>
-                    <span class="relative">Your Profile</span>
-                  </router-link>
                   <router-link :to="{name: 'settings'}" class="mt-3 px-2 -mx-2 py-1 transition duration-200 ease-in-out relative block hover:translate-x-2px hover:text-gray-900 text-gray-600 font-medium">
                     <span class="rounded absolute inset-0 bg-teal-200 opacity-0"></span>
                     <span class="relative">Settings</span>

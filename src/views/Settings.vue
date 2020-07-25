@@ -2,7 +2,7 @@
   <dashboard-layout>
     <template v-slot:header>
       <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 lg:flex lg:justify-between">
-        <h1 class="text-3xl font-bold leading-tight text-gray-900">Select Academic Year</h1>  
+        <h1 class="text-3xl font-bold leading-tight text-gray-900">Settings</h1>  
       </div>
     </template>
 
@@ -39,7 +39,6 @@
                 </flip-button>
 
                 <div class="mt-6">
-                 <h1 class="text-gray-700 text-lg font-semibold">Settings</h1>
                   <flip-select-input-with-label
                     class="flex-shrink w-full inline-block relative"
                     label-name="Academic Year"
