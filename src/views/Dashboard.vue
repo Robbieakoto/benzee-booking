@@ -12,7 +12,7 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{unpaid_bookings.aggregate.count}}</span>
+                <span class="text-5xl">{{ unpaidBookingsCount }}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Pending Requests</div>
             </div>
@@ -20,14 +20,14 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{paid_bookings.aggregate.count}}</span>
+                <span class="text-5xl">{{ paidBookingsCount }}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Paid Bookings</div>
             </div>
           </div>
           <div class="lg:w-1/3 text-center py-8">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{rooms.aggregate.count}}</span>
+                <span class="text-5xl">{{ roomsCount }}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Rooms</div>
           </div>
@@ -129,42 +129,47 @@
                           <div>
                               <div class="text-sm leading-5 text-gray-900">
                               Submitted on
-                              <time>{{bookingDate}}</time>
+                              <time>{{bookingDate(booking.created_at)}}</time>
                               </div>
                               <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                                  <svg
-                                    class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                  >
-                                    <path
-                                      d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
-                                    />
-                                    <path
-                                      fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-                                      clip-rule="evenodd"
-                                    />
-                                  </svg>
-                                  Paid
-                                </div>
-                                <div v-else class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                                  <svg
-                                    class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                  >
-                                    <path
-                                      d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
-                                    />
-                                    <path
-                                      fill-rule="evenodd"
-                                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-                                      clip-rule="evenodd"
-                                    />
-                                  </svg>
-                                  Pending Payment
-                                </div> 
+                                <svg
+                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
+                                  />
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Awaiting Room
+                              </div>
+                              <div v-if="!booking.is_available" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                                <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                    Pending Approval
+                                </span>
+                              </div>
+                              <div v-else-if="booking.is_available && !booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                                <svg
+                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
+                                  viewBox="0 0 20 20"
+                                  fill="currentColor"
+                                >
+                                  <path
+                                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
+                                  />
+                                  <path
+                                    fill-rule="evenodd"
+                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
+                                    clip-rule="evenodd"
+                                  />
+                                </svg>
+                                Pending Payment
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -265,7 +270,7 @@
               </div>
         </div>
         <!-- pagination -->
-        <div>
+        <!-- <div>
           <div
             class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
             >
@@ -291,7 +296,7 @@
                 >Next</a>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
     </template>
@@ -317,28 +322,51 @@ export default {
   },
   apollo: {
     bookings: {
-      query: GET_FIVE_BOOKINGS
+      query: GET_FIVE_BOOKINGS,
+      error (error) {
+        this.error = JSON.stringify(error.message).split(': ')[1]
+      }
     },
     unpaid_bookings: {
-      query: GET_DASHBOARD_STATS
+      query: GET_DASHBOARD_STATS,
+      error (error) {
+        this.error = JSON.stringify(error.message).split(': ')[1]
+      }
     },
     paid_bookings: {
-      query: GET_DASHBOARD_STATS
+      query: GET_DASHBOARD_STATS,
+      error (error) {
+        this.error = JSON.stringify(error.message).split(': ')[1]
+      }
     },
     rooms: {
-      query: GET_DASHBOARD_STATS
+      query: GET_DASHBOARD_STATS,
+      error (error) {
+        this.error = JSON.stringify(error.message).split(': ')[1]
+      }
     }
   },
   methods:{
     changeView(viewName){
       this.currentTable = viewName;
-    }
+    },
+    bookingDate(date){
+      return moment(date).format("MMMM DD YYYY")
+    },
   },
   computed:{
-    bookingDate: function(){
-      return moment(this.bookings.created_at).format("MMMM DD YYYY")
+    unpaidBookingsCount() {
+      if (this.$apollo.queries.unpaid_bookings.loading) return 0
+      return this.unpaid_bookings.aggregate.count
     },
-     
+    paidBookingsCount() {
+      if (this.$apollo.queries.paid_bookings.loading) return 0
+      return this.paid_bookings.aggregate.count
+    },
+    roomsCount() {
+      if (this.$apollo.queries.rooms.loading) return 0
+      return this.rooms.aggregate.count
+    }     
   },
   data(){
     return{

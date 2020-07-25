@@ -50,11 +50,11 @@
                   >
                     <div class="text-sm leading-5 text-gray-900">
                       Submitted on
-                      <time>{{bookingDate}}</time>
+                      <time>{{bookingDate(booking.created_at)}}</time>
                     </div>
                     <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
+                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -67,9 +67,14 @@
                           clip-rule="evenodd"
                         />
                       </svg>
-                      Paid
+                      Awaiting Room
                     </div>
-                    <div v-else class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                    <div v-if="!booking.is_available" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                      <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                          Pending Approval
+                      </span>
+                    </div>
+                    <div v-else-if="booking.is_available && !booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
                         class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
                         viewBox="0 0 20 20"
@@ -150,13 +155,16 @@ export default {
   },
   apollo: {
     bookings: {
-      query: GET_BOOKINGS
+      query: GET_BOOKINGS,
+      error (error) {
+        this.error = JSON.stringify(error.message).split(': ')[1]
+      }
     }
   },
-  computed:{
-    bookingDate: function(){
-      return moment(this.bookings.created_at).format("MMMM DD YYYY")
-    }
-  }
+  methods:{
+    bookingDate(date){
+      return moment(date).format("MMMM DD YYYY")
+    },
+  },
 };
 </script>
