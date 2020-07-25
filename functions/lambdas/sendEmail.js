@@ -34,7 +34,7 @@ exports.handler = async (event) => {
   const trigger = requestBody.trigger.name; //approved_booking
   const availabilityStatus = requestBody.event.data.new['is_available'];
   const data = {
-    url: 'http://benzeeresidency.com/'
+    url: 'https://paystack.com/pay/gxf5v0ilwf'
   }
 
   msg.html = parseEmailBody(trigger, availabilityStatus, data);

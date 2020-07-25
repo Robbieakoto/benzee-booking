@@ -76,7 +76,7 @@
         </div>
 
         <div class="pt-5 pb-3" v-if="currentTable == 'bookings'">
-              <label for="filter" class="sr-only">Search candidates</label>
+              <!-- <label for="filter" class="sr-only">Search candidates</label>
               <div class="flex rounded-md shadow-sm px-4 sm:px-6">
                 <div class="relative flex-grow focus-within:z-10">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -106,7 +106,7 @@
                     </svg>
                     <span class="ml-2">Filter</span>
                 </button>
-              </div>
+              </div> -->
 
                 <ul>
                   <li v-for="booking in bookings" :key="booking.id">
