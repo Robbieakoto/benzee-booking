@@ -52,7 +52,7 @@
                       Submitted on
                       <time>{{bookingDate}}</time>
                     </div>
-                    <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                    <div v-if="booking.is_approved" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
                         class="flex-shrink-0 mr-1.5 h-5 w-5 text-green-400"
                         viewBox="0 0 20 20"
@@ -67,7 +67,7 @@
                           clip-rule="evenodd"
                         />
                       </svg>
-                      Paid
+                      Pending Payment
                     </div>
                     <div v-else class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
@@ -84,7 +84,7 @@
                           clip-rule="evenodd"
                         />
                       </svg>
-                      Pending Payment
+                      Pending Approval
                     </div> 
                   </td>
                   <td

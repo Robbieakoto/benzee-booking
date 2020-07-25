@@ -1,0 +1,6 @@
+mutation assignRoom($id: uuid!, $roomId: uuid!){
+  update_bookings_by_pk(pk_columns: {id: $id}, _set: {id: $id, room_id: $roomId}) {
+    id
+    room_id
+  }
+}

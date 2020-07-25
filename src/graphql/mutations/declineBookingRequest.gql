@@ -1,0 +1,5 @@
+mutation declineBookingRequest($id: uuid!, $is_deleted: Boolean!){
+   update_bookings(where: {id: {_eq: $id}, is_available: {_eq: false}}, _set: {is_deleted: $is_deleted}) {
+    affected_rows
+  }
+}

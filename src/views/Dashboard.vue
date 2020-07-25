@@ -186,83 +186,47 @@
 
         <div class="pb-3" v-if="currentTable == 'payments'">
           <div>
-                <ul>
-                  <li>
-                  <router-link
-                  :to="{name: 'payment-details'}"
-                  class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
-                  >
+            <div >
+              <p> No Payments have been made yet</p>
+            </div>
+            <ul>
+              <li >
+                <router-link
+                :to="{name: 'payment-details'}"
+                class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
+                >
                   <div class="flex items-center px-4 py-4 sm:px-6">
                       <div class="min-w-0 flex-1 flex items-center">
-                      <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                          <div>
-                            <div
-                                class="text-sm leading-5 font-medium text-indigo-600 truncate"
-                            >Richard Osei</div>
-                            <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                                <span class="truncate">Foundation - Lancaster University</span>
+                        <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+                            <div>
+                              <div
+                                  class="text-sm leading-5 font-medium text-indigo-600 truncate"
+                              >Roberta Akoto</div>
+                              <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                                  <span class="truncate">4th Year - Knustford</span>
+                              </div>
                             </div>
-                          </div>
-                          <div class="hidden md:block">
-                          <div>
-                              <div class="py-4 text-sm leading-5 text-gray-900">
-                              Paid $200
-                              </div>
-                          </div>
-                          </div>
-                      </div>
+                            <div>
+                                <div class="py-4 text-sm leading-5 text-gray-900">
+                                Paid 
+                                </div>
+                            </div>
+                        </div>
                       </div>
                       <div>
-                      <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                          fill-rule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"
-                          />
-                      </svg>
+                        <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                            fill-rule="evenodd"
+                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                            clip-rule="evenodd"
+                            />
+                        </svg>
                       </div>
                   </div>
-                  </router-link>
-                  </li>
-                  <li class="border-t border-gray-200">
-                  <router-link
-                  :to="{name: 'booking-details'}"
-                  class="block hover:bg-gray-50 focus:outline-none focus:bg-gray-50 transition duration-150 ease-in-out"
-                  >
-                  <div class="flex items-center px-4 py-4 sm:px-6">
-                      <div class="min-w-0 flex-1 flex items-center">
-                      <div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
-                          <div>
-                          <div
-                              class="text-sm leading-5 font-medium text-indigo-600 truncate"
-                          >Richard Osei</div>
-                          <div class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                              <span class="truncate">Foundation - Lancaster University</span>
-                          </div>
-                          </div>
-                          <div class="hidden md:block">
-                          <div>
-                              <div class="py-4 text-sm leading-5 text-gray-900">
-                              Paid $200
-                              </div>
-                          </div>
-                          </div>
-                      </div>
-                      </div>
-                      <div>
-                      <svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                          <path
-                          fill-rule="evenodd"
-                          d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"
-                          />
-                      </svg>
-                      </div>
-                  </div>
-                  </router-link>
-                  </li>
-                </ul>
-              </div>
+                </router-link>
+              </li>
+            </ul>
+          </div>
         </div>
         <!-- pagination -->
         <div>
@@ -303,7 +267,6 @@
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import { GET_FIVE_BOOKINGS } from '@/graphql/queries';
 import { GET_DASHBOARD_STATS} from '@/graphql/queries';
-
 import moment from 'moment'
 
 
@@ -314,6 +277,13 @@ export default {
   },
   components: {
     DashboardLayout
+  },
+  data(){
+    return{
+      currentTable: 'bookings',
+      paymentsTable:'',
+      bookingsTable:'',
+    }
   },
   apollo: {
     bookings: {
@@ -327,7 +297,7 @@ export default {
     },
     rooms: {
       query: GET_DASHBOARD_STATS
-    }
+    },
   },
   methods:{
     changeView(viewName){
@@ -335,18 +305,9 @@ export default {
     }
   },
   computed:{
-    bookingDate: function(){
+    bookingDate(){
       return moment(this.bookings.created_at).format("MMMM DD YYYY")
-    },
-     
-  },
-  data(){
-    return{
-      currentTable: 'bookings',
-      paymentsTable:'',
-      bookingsTable:'',
-      bookings:[]
     }
-  },
+  }
 };
 </script>

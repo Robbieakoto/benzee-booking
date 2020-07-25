@@ -178,12 +178,14 @@
 </template>
 
 <script>
+
 export default {
   name: "DashboardLayout",
   data: () => ({
     showProfileDropdown: false,
     showProfileOnPhone: false
   }),
+
   methods: {
     displayProfileDropdown() {
       this.showProfileDropdown = !this.showProfileDropdown;
