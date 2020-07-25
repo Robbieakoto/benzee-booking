@@ -12,7 +12,7 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">21</span>
+                <span class="text-5xl">{{unpaid_bookings.aggregate.count}}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Pending Requests</div>
             </div>
@@ -20,18 +20,16 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{numberOfPaidBookings}}</span>
+                <span class="text-5xl">{{paid_bookings.aggregate.count}}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Paid Bookings</div>
             </div>
           </div>
           <div class="lg:w-1/3 text-center py-8">
-            <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">54</span>
+                <span class="text-5xl">{{rooms.aggregate.count}}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Rooms</div>
-            </div>
           </div>
         </div>
       </div>
@@ -62,7 +60,7 @@
               <div>
                 <nav class="-mb-px flex">
                   <button
-                    class="whitespace-no-wrap ml-8 py-4 px-1 border-b-2 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700 transition ease-in-out duration-150"
+                    class=" whitespace-no-wrap ml-8 py-4 px-1 border-b-2 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700 transition ease-in-out duration-150"
                     active-class="border-indigo-500"
                     @click="changeView('bookings')"
                   >Bookings</button>
@@ -131,7 +129,7 @@
                           <div>
                               <div class="text-sm leading-5 text-gray-900">
                               Submitted on
-                              <time datetime="2020-01-07">January 7, 2020</time>
+                              <time>{{bookingDate}}</time>
                               </div>
                               <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                                   <svg
@@ -303,7 +301,11 @@
 
 <script>
 import DashboardLayout from "@/components/DashboardLayout.vue";
-import { GET_FIVE_BOOKINGS } from '@/graphql/queries'
+import { GET_FIVE_BOOKINGS } from '@/graphql/queries';
+import { GET_DASHBOARD_STATS} from '@/graphql/queries';
+
+import moment from 'moment'
+
 
 export default {
   name: "Dashboard",
@@ -316,7 +318,27 @@ export default {
   apollo: {
     bookings: {
       query: GET_FIVE_BOOKINGS
+    },
+    unpaid_bookings: {
+      query: GET_DASHBOARD_STATS
+    },
+    paid_bookings: {
+      query: GET_DASHBOARD_STATS
+    },
+    rooms: {
+      query: GET_DASHBOARD_STATS
     }
+  },
+  methods:{
+    changeView(viewName){
+      this.currentTable = viewName;
+    }
+  },
+  computed:{
+    bookingDate: function(){
+      return moment(this.bookings.created_at).format("MMMM DD YYYY")
+    },
+     
   },
   data(){
     return{
@@ -326,16 +348,5 @@ export default {
       bookings:[]
     }
   },
-  methods:{
-    changeView(viewName){
-      this.currentTable = viewName;
-    }
-  },
-  computed:{
-    numberOfPaidBookings(){
-      console.log(this.bookings.length) 
-      return this.bookings.length
-    }
-  }
 };
 </script>

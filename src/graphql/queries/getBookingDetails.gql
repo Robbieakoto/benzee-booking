@@ -1,9 +1,10 @@
 query getBookingDetails($id: uuid!) {
-  bookings(where: {id: {_eq: $id}}) {
+  booking: bookings(where: {id: {_eq: $id}}) {
     id
     duration
     created_at
     is_paid
+    is_available
     resident {
         id
         email
