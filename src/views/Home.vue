@@ -102,7 +102,7 @@
                   input-name="nationality"
                   option-title="Choose your nationality"
                   :required="true"
-                  :options="countries"
+                  :options="filteredCountries"
                   v-model="resident.nationality"
                 ></flip-select-input-with-label>
                 <flip-input-with-label
@@ -163,15 +163,18 @@
               <div class="rounded-md shadow mt-4">
                 <flip-button label="Book a room" @button-clicked="storeBookingRequest()">
                   <svg 
-                    class="icon-book-open h-6 w-6 text-indigo-300 group-hover:text-indigo-400 transition ease-in-out duration-150"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg" 
+                    viewBox="0 0 24 24" 
                     fill="currentColor"
-                  >
-                    <g>
-                      <path fill-rule="evenodd" class="secondary" d="M12 21a2 2 0 0 1-1.41-.59l-.83-.82A2 2 0 0 0 8.34 19H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h4a5 5 0 0 1 4 2v16z"/>
-                      <path class="primary" d="M12 21V5a5 5 0 0 1 4-2h4a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-4.34a2 2 0 0 0-1.42.59l-.83.82A2 2 0 0 1 12 21z"/>
-                    </g>
+                    class="icon-click-target h-6 w-6 text-indigo-300 group-hover:text-indigo-400 transition ease-in-out duration-150">
+                    <path 
+                      class="primary" 
+                      d="M21.97 12.73c-.25-.22-.56-.4-.92-.54L20 11.8a8 8 0 1 0-8.2 8.2l.4 1.06c.12.36.3.67.53.92a10 10 0 1 1 9.25-9.25zm-10.95 5.19a6 6 0 1 1 6.9-6.9l-2.39-.9a4 4 0 1 0-5.41 5.41l.9 2.39z"
+                    />
+                    <path 
+                      class="secondary" 
+                      d="M17.96 16.54l3.75 3.75a1 1 0 0 1-1.42 1.42l-3.75-3.75-.57 2.28a1 1 0 0 1-1.9.11l-3-8a1 1 0 0 1 1.28-1.29l8 3a1 1 0 0 1-.1 1.91l-2.3.57z"
+                    />
                   </svg>
                 </flip-button>
               </div>
@@ -191,7 +194,7 @@
 <script>
 // @ is an alias to /src
 // import roomTypes from "../../json/room-types.json";
-import countries from "../../json/countries.json";
+import filteredCountries from "../../json/filteredCountries.json";
 
 import Logo from "../components/Logo";
 import FlipButton from "../components/Button";
@@ -230,7 +233,7 @@ export default {
     country: "",
     room_types: [],
     academic_year: null,
-    countries,
+    filteredCountries,
     resident: {
       fullname: null,
       email: null,

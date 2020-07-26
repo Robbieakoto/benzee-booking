@@ -1,8 +1,9 @@
 query getFiveBookings {
-  bookings(limit:5) {
+  bookings(limit:5, order_by: {created_at: asc}) {
       id
       created_at
       is_paid
+      is_available
       resident {
         id
         name
