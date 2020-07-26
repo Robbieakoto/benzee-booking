@@ -67,7 +67,7 @@ import FlipInputWithLabel from "../components/InputWithLabel";
 import FlipButton from "../components/Button";
 
 export default {
-  name: "RoomList",
+  name: "Settings",
   components: {
     DashboardLayout,
     FlipSelectInputWithLabel,
