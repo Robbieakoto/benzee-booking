@@ -52,9 +52,35 @@
                       Submitted on
                       <time>{{bookingDate(booking.created_at)}}</time>
                     </div>
-                    <div v-if="booking.is_approved" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                    <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                       <svg
-                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
+                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-500"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                        />
+                      </svg>
+                      Awaiting Room Assignment
+                    </div>
+                    <div v-else-if="!booking.is_available" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                      <svg
+                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
+                        fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                      >
+                        <path
+                          d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                        />
+                      </svg>
+                      Pending Approval
+                    </div>
+                    <div v-else-if="booking.is_available && !booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                      <svg
+                        class="flex-shrink-0 mr-1.5 h-5 w-5 text-teal-400"
                         viewBox="0 0 20 20"
                         fill="currentColor"
                       >
@@ -67,18 +93,8 @@
                           clip-rule="evenodd"
                         />
                       </svg>
-                      Awaiting Room
+                      Pending Payment
                     </div>
-                    <div v-if="!booking.is_available" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                      <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                          Pending Approval
-                      </span>
-                    </div>
-                    <div v-else-if="booking.is_available && !booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                      <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        Pending Payment
-                      </span>
-                    </div> 
                   </td>
                   <td
                     class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium"
@@ -100,7 +116,7 @@
                 </tr>
               </tbody>
             </table>
-            <div
+            <!-- <div
               class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
             >
               <div class="hidden sm:block">
@@ -124,7 +140,7 @@
                   class="ml-3 relative inline-flex items-center px-4 py-2 border border-gray-300 text-sm leading-5 font-medium rounded-md text-gray-700 bg-white hover:text-gray-500 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 active:bg-gray-100 active:text-gray-700 transition ease-in-out duration-150"
                 >Next</a>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

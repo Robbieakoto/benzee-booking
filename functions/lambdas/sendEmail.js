@@ -34,7 +34,7 @@ exports.handler = async (event) => {
   const trigger = requestBody.trigger.name; //approved_booking
   const availabilityStatus = requestBody.event.data.new['is_available'];
   const data = {
-    url: 'http://benzeeresidency.com/'
+    url: 'https://paystack.com/pay/gxf5v0ilwf'
   }
 
   msg.html = parseEmailBody(trigger, availabilityStatus, data);
@@ -140,7 +140,7 @@ export function parseEmailBody(trigger, availabilityStatus, data = {}) {
                         </tr>
                       </tbody>
                     </table>
-                    <p style="font-size: 8px;">Button not working? Copy use link => ${data.url}</p>                      
+                    <p style="font-size: 8px;">Button not working? Copy or use link => ${data.url}</p>                      
                   </td>
                 </tr>
               </table>
@@ -288,7 +288,7 @@ export function parseEmailBody(trigger, availabilityStatus, data = {}) {
                       <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
                         <tr>
                           <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                            <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">BenZee Residency, Agringanor - East Legon</span>
+                            <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">BenZee Residency, Adjringanor - East Legon</span>
                             <br>
                             <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;"> Tel: (233) 054 513 2507</span> 
                           </td>

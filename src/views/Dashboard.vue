@@ -12,7 +12,7 @@
           <div class="lg:w-1/3 text-center py-8">
             <div class="lg:border-r">
               <div class="text-grey-darker mb-2">
-                <span class="text-5xl">{{ unpaidBookingsCount }}</span>
+                <span class="text-5xl">{{ pendingApprovalCount }}</span>
               </div>
               <div class="text-sm uppercase text-grey tracking-wide">Pending Requests</div>
             </div>
@@ -76,7 +76,7 @@
         </div>
 
         <div class="pt-5 pb-3" v-if="currentTable == 'bookings'">
-              <label for="filter" class="sr-only">Search candidates</label>
+              <!-- <label for="filter" class="sr-only">Search candidates</label>
               <div class="flex rounded-md shadow-sm px-4 sm:px-6">
                 <div class="relative flex-grow focus-within:z-10">
                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -106,7 +106,7 @@
                     </svg>
                     <span class="ml-2">Filter</span>
                 </button>
-              </div>
+              </div> -->
 
                 <ul>
                   <li v-for="booking in bookings" :key="booking.id">
@@ -126,36 +126,40 @@
                           </div>
                           </div>
                           <div class="hidden md:block">
-                          <div>
+                            <div>
                               <div class="text-sm leading-5 text-gray-900">
                               Submitted on
                               <time>{{bookingDate(booking.created_at)}}</time>
                               </div>
                               <div v-if="booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                                 <svg
-                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-400"
-                                  viewBox="0 0 20 20"
+                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-red-500"
                                   fill="currentColor"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
                                 >
                                   <path
-                                    d="M8.433 7.418c.155-.103.346-.196.567-.267v1.698a2.305 2.305 0 01-.567-.267C8.07 8.34 8 8.114 8 8c0-.114.07-.34.433-.582zM11 12.849v-1.698c.22.071.412.164.567.267.364.243.433.468.433.582 0 .114-.07.34-.433.582a2.305 2.305 0 01-.567.267z"
-                                  />
-                                  <path
-                                    fill-rule="evenodd"
-                                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
-                                    clip-rule="evenodd"
+                                    d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
                                   />
                                 </svg>
-                                Awaiting Room
+                                Awaiting Room Assignment
                               </div>
-                              <div v-if="!booking.is_available" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
-                                <span class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
-                                    Pending Approval
-                                </span>
+                              <div v-else-if="!booking.is_available" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
+                                <svg
+                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
+                                  fill="currentColor"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path
+                                    d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"
+                                  />
+                                </svg>
+                                Pending Approval
                               </div>
                               <div v-else-if="booking.is_available && !booking.is_paid" class="mt-2 flex items-center text-sm leading-5 text-gray-500">
                                 <svg
-                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-yellow-400"
+                                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-teal-400"
                                   viewBox="0 0 20 20"
                                   fill="currentColor"
                                 >
@@ -290,7 +294,7 @@ export default {
         this.error = JSON.stringify(error.message).split(': ')[1]
       }
     },
-    unpaid_bookings: {
+    pending_approval: {
       query: GET_DASHBOARD_STATS,
       error (error) {
         this.error = JSON.stringify(error.message).split(': ')[1]
@@ -318,9 +322,9 @@ export default {
     },
   },
   computed:{
-    unpaidBookingsCount() {
-      if (this.$apollo.queries.unpaid_bookings.loading) return 0
-      return this.unpaid_bookings.aggregate.count
+    pendingApprovalCount() {
+      if (this.$apollo.queries.pending_approval.loading) return 0
+      return this.pending_approval.aggregate.count
     },
     paidBookingsCount() {
       if (this.$apollo.queries.paid_bookings.loading) return 0
