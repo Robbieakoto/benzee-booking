@@ -1,0 +1,350 @@
+{
+  "1": {
+    "label": "Algeria",
+    "key": "DZ"
+  },
+  "2": {
+    "label": "Angola",
+    "key": "AO"
+  },
+  "3": {
+    "label": "Argentina",
+    "key": "AR"
+  },
+  "4": {
+    "label": "Australia",
+    "key": "AU"
+  },
+  "5": {
+    "label": "Austria",
+    "key": "AT"
+  },
+  "6": {
+    "label": "Belgium",
+    "key": "BE"
+  },
+  "7": {
+    "label": "Benin",
+    "key": "BJ"
+  },
+  "8": {
+    "label": "Botswana",
+    "key": "BW"
+  },
+  "9": {
+    "label": "Brazil",
+    "key": "BR"
+  },
+  "10": {
+    "label": "Bulgaria",
+    "key": "BG"
+  },
+  "11": {
+    "label": "Burkina Faso",
+    "key": "BF"
+  },
+  "12": {
+    "label": "Burundi",
+    "key": "BI"
+  },
+  "13": {
+    "label": "Cambodia",
+    "key": "KH"
+  },
+  "14": {
+    "label": "Cameroon",
+    "key": "CM"
+  },
+  "15": {
+    "label": "Canada",
+    "key": "CA"
+  },
+  "16": {
+    "label": "Cape Verde",
+    "key": "CV"
+  },
+  "17": {
+    "label": "Central African Republic",
+    "key": "CF"
+  },
+  "18": {
+    "label": "Chad",
+    "key": "TD"
+  },
+  "19": {
+    "label": "China",
+    "key": "CN"
+  },
+  "20": {
+    "label": "Colombia",
+    "key": "CO"
+  },
+  "21": {
+    "label": "Comoros",
+    "key": "KM"
+  },
+  "22": {
+    "label": "Congo",
+    "key": "CG"
+  },
+  "23": {
+    "label": "Côte d'Ivoire, Republic of",
+    "key": "CI"
+  },
+  "24": {
+    "label": "Croatia",
+    "key": "HR"
+  },
+  "25": {
+    "label": "Denmark",
+    "key": "DK"
+  },
+  "26": {
+    "label": "Dominica",
+    "key": "DM"
+  },
+  "27": {
+    "label": "Ecuador",
+    "key": "EC"
+  },
+  "28": {
+    "label": "Egypt",
+    "key": "EG"
+  },
+  "29": {
+    "label": "Equatorial Guinea",
+    "key": "GQ"
+  },
+  "30": {
+    "label": "Eritrea",
+    "key": "ER"
+  },
+  "31": {
+    "label": "Ethiopia",
+    "key": "ET"
+  },
+  "32": {
+    "label": "Finland",
+    "key": "FI"
+  },
+  "33": {
+    "label": "France",
+    "key": "FR"
+  },
+  "34": {
+    "label": "Gabon",
+    "key": "GA"
+  },
+  "35": {
+    "label": "Gambia",
+    "key": "GM"
+  },
+  "36": {
+    "label": "Georgia",
+    "key": "GE"
+  },
+  "37": {
+    "label": "Germany",
+    "key": "DE"
+  },
+  "38": {
+    "label": "Ghana",
+    "key": "GH"
+  },
+  "39": {
+    "label": "Guinea",
+    "key": "GN"
+  },
+  "40": {
+    "label": "Guinea-Bissau",
+    "key": "GW"
+  },
+  "41": {
+    "label": "Haiti",
+    "key": "HT"
+  },
+  "42": {
+    "label": "India",
+    "key": "IN"
+  },
+  "43": {
+    "label": "Indonesia",
+    "key": "ID"
+  },
+  "44": {
+    "label": "Israel",
+    "key": "IL"
+  },
+  "45": {
+    "label": "Italy",
+    "key": "IT"
+  },
+  "46": {
+    "label": "Jamaica",
+    "key": "JM"
+  },
+  "47": {
+    "label": "Kenya",
+    "key": "KE"
+  },
+  "48": {
+    "label": "Lesotho",
+    "key": "LS"
+  },
+  "49": {
+    "label": "Liberia",
+    "key": "LR"
+  },
+  "50": {
+    "label": "Libya",
+    "key": "LY"
+  },
+  "51": {
+    "label": "Macedonia, Republic of",
+    "key": "MK"
+  },
+  "52": {
+    "label": "Madagascar",
+    "key": "MG"
+  },
+  "53": {
+    "label": "Malawi",
+    "key": "MW"
+  },
+  "54": {
+    "label": "Malaysia",
+    "key": "MY"
+  },
+  "55": {
+    "label": "Mali",
+    "key": "ML"
+  },
+  "56": {
+    "label": "Mauritania",
+    "key": "MR"
+  },
+  "57": {
+    "label": "Mauritius",
+    "key": "MU"
+  },
+  "58": {
+    "label": "Morocco",
+    "key": "MA"
+  },
+  "59": {
+    "label": "Mozambique",
+    "key": "MZ"
+  },
+  "60": {
+    "label": "Namibia",
+    "key": "NA"
+  },
+  "61": {
+    "label": "Netherlands",
+    "key": "NL"
+  },
+  "62": {
+    "label": "Niger",
+    "key": "NE"
+  },
+  "63": {
+    "label": "Nigeria",
+    "key": "NG"
+  },
+  "64": {
+    "label": "Norway",
+    "key": "NO"
+  },
+  "65": {
+    "label": "Philippines",
+    "key": "PH"
+  },
+  "66": {
+    "label": "Poland",
+    "key": "PL"
+  },
+  "67": {
+    "label": "Rwanda",
+    "key": "RW"
+  },
+  "68": {
+    "label": "Saudi Arabia",
+    "key": "SA"
+  },
+  "69": {
+    "label": "Senegal",
+    "key": "SN"
+  },
+  "70": {
+    "label": "Sierra Leone",
+    "key": "SL"
+  },
+  "71": {
+    "label": "Somalia",
+    "key": "SO"
+  },
+  "72": {
+    "label": "South Africa",
+    "key": "ZA"
+  },
+  "73": {
+    "label": "Spain",
+    "key": "ES"
+  },
+  "74": {
+    "label": "Sudan",
+    "key": "SD"
+  },
+  "78": {
+    "label": "Tanzania, United Republic of",
+    "key": "TZ"
+  },
+  "79": {
+    "label": "Thailand",
+    "key": "TH"
+  },
+  "80": {
+    "label": "Togo",
+    "key": "TG"
+  },
+  "81": {
+    "label": "Tunisia",
+    "key": "TN"
+  },
+  "82": {
+    "label": "Turkey",
+    "key": "TR"
+  },
+  "83": {
+    "label": "Uganda",
+    "key": "UG"
+  },
+  "84": {
+    "label": "Ukraine",
+    "key": "UA"
+  },
+  "85": {
+    "label": "United Arab Emirates",
+    "key": "AE"
+  },
+  "86": {
+    "label": "United Kingdom",
+    "key": "GB"
+  },
+  "87": {
+    "label": "United States",
+    "key": "US"
+  },
+  "88": {
+    "label": "Uruguay",
+    "key": "UY"
+  },
+  "89": {
+    "label": "Zambia",
+    "key": "ZM"
+  },
+  "90": {
+    "label": "Zimbabwe",
+    "key": "ZW"
+  }
+}

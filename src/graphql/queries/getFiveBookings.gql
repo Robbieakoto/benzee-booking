@@ -1,5 +1,5 @@
 query getFiveBookings {
-  bookings(limit: 5, where: {room_id: {_is_null: true}, is_deleted: {_eq: false}}) {
+  bookings(limit: 5, order_by: {last_updated: asc}, where: {room_id: {_is_null: true}, is_deleted: {_eq: false}}) {
       id
       created_at
       is_paid
@@ -11,5 +11,6 @@ query getFiveBookings {
         institution
       }
   }
+  
 }
 

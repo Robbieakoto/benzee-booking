@@ -1,5 +1,5 @@
 query getBookings {
-    bookings(where: {is_deleted: {_eq: false}, room_id: {_is_null: true}}) {
+    bookings(where: {is_deleted: {_eq: false}, room_id: {_is_null: true}}, order_by: {last_updated: asc}) {
         id
         duration
         created_at

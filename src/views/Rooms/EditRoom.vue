@@ -26,14 +26,6 @@
                     :required="true"
                     :options="roomTypes"
                     ></flip-select-input-with-label>
-
-                    <flip-input-with-label
-                    class="mt-8 flex-shrink w-full inline-block relative"
-                    label-name="Number of Occupants"
-                    input-type="number"
-                    input-name="number_of_occupants"
-                    :required="true"
-                    ></flip-input-with-label>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
                     <span class="flex w-full rounded-md shadow-sm sm:ml-3 sm:w-auto">

@@ -260,12 +260,13 @@ export default {
               query: GET_BOOKINGS,
               data
             })
+            this.roomAssigned = true
             return update_bookings    
            } 
         }
       })
     },
-    async assignRoom(){
+    async assignRoom(){      
       await this.$apollo.mutate({
         mutation: ASSIGN_ROOM,
         variables:{
