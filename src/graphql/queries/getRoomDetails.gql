@@ -1,10 +1,11 @@
 query getRoomDetails($id: uuid!) {
-  rooms(where: {id: {_eq: $id}}) {
+  room: rooms(where: {id: {_eq: $id}}) {
     id
     name
     last_updated
     created_at
     room_type {
+      id
       title
       number_of_occupants
       amount_12_months_duration

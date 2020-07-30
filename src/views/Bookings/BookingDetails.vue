@@ -69,7 +69,7 @@
           :options="roomsList"
           v-model="room"
         ></flip-select-input-with-label>
-        <button v-on:click="assignRoom()" type="submit" class="my-4 md:my-10 w-full md:w-1/3 justify-center py-3 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out">
+        <button v-on:click="assignRoom" type="submit" class="my-4 md:my-10 w-full md:w-1/3 justify-center py-3 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo transition duration-150 ease-in-out">
           Assign Room
         </button>
       </div>
@@ -172,8 +172,7 @@ import FlipSelectInputWithLabel from "@/components/SelectInputWithLabel";
 import { GET_BOOKING_DETAILS } from '@/graphql/queries'
 import {APPROVE_BOOKING_REQUEST} from '@/graphql/mutations'
 import {DECLINE_BOOKING_REQUEST} from '@/graphql/mutations'
-import { GET_BOOKINGS } from '@/graphql/queries'
-import { GET_ROOMS } from '@/graphql/queries'
+import { GET_BOOKINGS, GET_ROOMS } from '@/graphql/queries'
 import {ASSIGN_ROOM} from '@/graphql/mutations'
 import {UPDATE_RESIDENT} from '@/graphql/mutations'
 
@@ -232,11 +231,11 @@ export default {
               query: GET_BOOKINGS
             });
             const updatedBooking = data.bookings.find(booking => booking.id === this.bookingId);
-            updatedBooking.is_available = true
+              updatedBooking.is_available = true
             cache.writeQuery({
               query: GET_BOOKINGS,
               data
-            })
+            });
             this.bookingApproved = true  
            } 
          }
