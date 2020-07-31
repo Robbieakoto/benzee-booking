@@ -112,7 +112,10 @@ export default {
   },
   apollo: {
     rooms: {
-      query: GET_ROOMS
+      query: GET_ROOMS,
+      error (error) {
+        this.error = JSON.stringify(error.message)
+      }
     }
   }
 };

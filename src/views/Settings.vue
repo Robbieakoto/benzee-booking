@@ -69,7 +69,7 @@ import { GET_CURRENT_ACADEMIC_YEAR } from '@/graphql/queries'
 
 
 export default {
-  name: "RoomList",
+  name: "Settings",
   components: {
     DashboardLayout,
     FlipSelectInputWithLabel,
@@ -91,7 +91,7 @@ export default {
     }
   },
   computed: {
-    academicYear: function(){
+    academicYear(){
       return this.academic_years.map((year)=>{
         return {
           key: year.id

@@ -11,7 +11,8 @@
       :required="required"
       @input="$emit('input', $event.target.value)"
     >
-      <option disabled selected>{{ optionTitle }}</option>
+      <option v-if="selectedOption" :value="selectedOption.value">{{ selectedOption.title }}</option>
+      <option v-else disabled selected>{{ optionTitle }}</option>
       <option
         v-for="option in options"
         v-bind:key="option.key"
@@ -23,6 +24,13 @@
 <script>
 export default {
   name: "FlipSelectInputWithLabel",
-  props: ["labelName", "inputName", "options", "optionTitle", "required"],
+  props: [
+    "labelName", 
+    "inputName", 
+    "options", 
+    "optionTitle", 
+    "required",
+    "selectedOption",
+  ],
 };
 </script>

@@ -1,10 +1,11 @@
 query getRoom {
-  rooms {
+  rooms(order_by: {name: asc}) {
     id
     name
     last_updated
     created_at
     room_type {
+      id
       title
       number_of_occupants
     }

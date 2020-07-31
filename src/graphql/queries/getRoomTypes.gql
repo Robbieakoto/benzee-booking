@@ -4,5 +4,6 @@ query getRoomTypes {
     title
     amount_9_months_duration
     amount_12_months_duration
+    number_of_occupants
   }
 }
