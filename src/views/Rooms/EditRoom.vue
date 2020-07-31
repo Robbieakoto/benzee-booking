@@ -26,7 +26,7 @@
                     input-name="room_name"
                     :required="true"
                     v-model="roomName"
-                    :value="getRoomName()"
+                    v-bind="getRoomName()"
                     ></flip-input-with-label>
 
                    <flip-select-input-with-label
