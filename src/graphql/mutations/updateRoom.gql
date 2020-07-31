@@ -1,0 +1,5 @@
+mutation updateRoom($id: uuid!, $roomTypeId: uuid!, $roomName: String!){
+  update_rooms(where: {id: {_eq: $id}}, _set: {room_type_id:$roomTypeId, name: $roomName}) {
+    affected_rows
+  }
+}

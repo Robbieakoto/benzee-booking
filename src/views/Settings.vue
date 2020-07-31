@@ -65,6 +65,8 @@ import DashboardLayout from "@/components/DashboardLayout.vue";
 import FlipSelectInputWithLabel from "../components/SelectInputWithLabel";
 import FlipInputWithLabel from "../components/InputWithLabel";
 import FlipButton from "../components/Button";
+import { GET_CURRENT_ACADEMIC_YEAR } from '@/graphql/queries'
+
 
 export default {
   name: "Settings",
@@ -73,6 +75,29 @@ export default {
     FlipSelectInputWithLabel,
     FlipInputWithLabel,
     FlipButton
-  }
+  },
+  apollo:{
+    academic_year: {
+      query: GET_CURRENT_ACADEMIC_YEAR,
+      error (error) {
+        this.error = JSON.stringify(error.message).split(': ')[1]
+      }
+    }
+  },
+  data() {
+    return {
+      academic_years: [],
+      academic_year: null,
+    }
+  },
+  computed: {
+    academicYear(){
+      return this.academic_years.map((year)=>{
+        return {
+          key: year.id
+        }
+      })
+    }
+  },
 };
 </script>

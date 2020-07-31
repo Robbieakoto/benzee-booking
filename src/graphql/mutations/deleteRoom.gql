@@ -1,0 +1,5 @@
+mutation deleteRoom($id: uuid!) {
+  delete_rooms(where: {id: {_eq: $id}}) {
+    affected_rows
+  }
+}

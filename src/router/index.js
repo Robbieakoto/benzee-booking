@@ -51,7 +51,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "residents" */ '../views/Rooms/AddRoom.vue')
   },
   {
-    path: '/edit-room',
+    path: '/edit-room/:roomId',
     name: 'edit-room',
     beforeEnter: requireAuth,
     component: () => import( /* webpackChunkName: "residents" */ '../views/Rooms/EditRoom.vue')
