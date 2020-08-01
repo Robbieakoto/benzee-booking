@@ -84,6 +84,8 @@
                   input-name="email"
                   :required="true"
                   v-model="resident.email"
+                  @blur="validateEmail"
+                  :error-message="emailInputErrorMessage"
                 ></flip-input-with-label>
                 <flip-input-with-label
                   class="mt-8 flex-shrink w-full md:w-1/2 inline-block relative px-3"
@@ -229,6 +231,7 @@ export default {
   },
   data: () => ({
     error: null,
+    emailInputErrorMessage: '',
     bookingSubmitted: false,
     country: "",
     room_types: [],
@@ -340,6 +343,23 @@ export default {
         },
       });
       return newResidentId
+    },
+
+    validateEmail() {
+      this.emailInputErrorMessage = ''
+
+      if (!this.resident.email) return;
+      
+      if (!this.resident.email.includes("@")) {
+        this.emailInputErrorMessage = 'Email Address not valid'
+        return
+      }
+    
+      if (this.resident.email.split('@')[1] != "gmail.com") {
+        this.emailInputErrorMessage = 'Sorry, we can only send emails to only gmail accounts'
+        return
+      }
+        
     }
   },
   computed: {

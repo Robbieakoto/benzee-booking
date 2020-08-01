@@ -128,7 +128,9 @@
         <div class="h-full">
           <nav class="bg-white px-6 pt-6 text-base">
             <div class="mb-10">
-              <router-link :to="{name: 'dashboard'}" class="flex items-center py-1 hover:text-gray-900 font-medium text-gray-600">
+              <router-link 
+                :to="{name: 'dashboard'}" 
+                class="flex items-center py-1 hover:text-gray-900 font-medium text-gray-600">
                 <span class="ml-3">Dashboard</span>
               </router-link>
               <router-link :to="{name: 'bookings-list'}" class="mt-3 lg:mt-1 flex items-center py-1 hover:text-gray-900 font-medium text-gray-900">

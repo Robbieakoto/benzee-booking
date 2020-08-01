@@ -27,6 +27,8 @@
                     :required="true"
                     v-model="roomName"
                     v-bind="getRoomName()"
+                    v-model="roomDetails.name"
+                    :value="roomDetails.name"
                     ></flip-input-with-label>
 
                    <flip-select-input-with-label
@@ -36,7 +38,8 @@
                     option-title="Choose Room Type"
                     :required="true"
                     :options="roomTypes"
-                    v-model="roomType"
+                    v-model="room_type_id"
+                    :selected-option="selectedRoom"
                     ></flip-select-input-with-label>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
@@ -61,7 +64,7 @@
 import DashboardLayout from "@/components/DashboardLayout.vue";
 import FlipInputWithLabel from "../../components/InputWithLabel";
 import FlipSelectInputWithLabel from "../../components/SelectInputWithLabel";
-import { GET_ROOM_TYPES, GET_ROOM_DETAILS} from '@/graphql/queries'
+import { GET_ROOM_TYPES, GET_ROOM_DETAILS, GET_ROOMS} from '@/graphql/queries'
 import {UPDATE_ROOM} from '@/graphql/mutations'
 
 export default {
@@ -77,8 +80,7 @@ export default {
    data() {
      return{
       room_types: [],
-      roomType: null,
-      roomName: null,
+      room_type_id: null,
       roomId: null,
       roomIsUpdated: false
      } 
@@ -103,7 +105,7 @@ export default {
     }
    },
    computed: {
-    roomTypes: function() {
+    roomTypes() {
       return this.room_types.map((type) => {
         return {
           key: type.id,
@@ -111,37 +113,50 @@ export default {
           value: type.id
         }
       })
+    },
+    roomDetails(){
+      if (this.$apollo.queries.room.loading) return {}
+      return this.room[0]
+    },
+    selectedRoom() {
+      return {
+        id: this.roomDetails.room_type.id,
+        title: this.roomDetails.room_type.title,
+      }
     }
   },
   methods:{
-    getRoomName() {
-        this.roomName = this.room[0].name
-    },
-    getRoomType() {
-        this.roomType = this.room[0]["room_type"].id
-    },
     async updateRoom(){
+      this.roomIsUpdated = false
+      if (!this.room_type_id) {
+        this.room_type_id = this.selectedRoom.id
+      }
       await this.$apollo.mutate({
          mutation: UPDATE_ROOM,
          variables:{ 
            id: this.roomId,
-           roomTypeId: this.getRoomType(),
-           roomName: this.getRoomName()
+           roomTypeId: this.room_type_id,
+           roomName: this.roomDetails.name
          },
-         Update:(cache, {data:{update_rooms} }) => {
+         update:(cache, {data:{update_rooms} }) => {
           if (update_rooms.affected_rows ) {
+            this.roomIsUpdated = true
             const data = cache.readQuery({
-              query: GET_ROOM_DETAILS
+              query: GET_ROOMS
             });
-            const updatedRoom = data.room.find(room => room.id === this.roomId);
-              updatedRoom.roomTypeId =  this.getRoomType()
-              updatedRoom.roomName = this.getRoomName()
+            
+            const roomIndex = data.rooms.findIndex(room => room.id === this.roomId);
+            const selectedRoomTypeDetails = this.room_types.find(room_type => room_type.id === this.room_type_id)
+            
+            data.rooms[roomIndex].name =  this.roomDetails.name
+            data.rooms[roomIndex].room_type.id =  this.room_type_id
+            data.rooms[roomIndex].room_type.title = selectedRoomTypeDetails.title
+            data.rooms[roomIndex].room_type.number_of_occupants = selectedRoomTypeDetails.number_of_occupants
+            
             cache.writeQuery({
-              query: GET_ROOM_DETAILS,
+              query: GET_ROOMS,
               data
             });
-            this.roomIsUpdated = true
-            return update_rooms
            } 
          }
       })
