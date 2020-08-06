@@ -173,8 +173,7 @@ import { GET_BOOKING_DETAILS } from '@/graphql/queries'
 import {APPROVE_BOOKING_REQUEST} from '@/graphql/mutations'
 import {DECLINE_BOOKING_REQUEST} from '@/graphql/mutations'
 import { GET_BOOKINGS, GET_ROOMS } from '@/graphql/queries'
-import {ASSIGN_ROOM} from '@/graphql/mutations'
-import {UPDATE_RESIDENT} from '@/graphql/mutations'
+import {ASSIGN_ROOM, UPDATE_RESIDENT} from '@/graphql/mutations'
 
 
 import moment from 'moment'

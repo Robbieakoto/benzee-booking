@@ -1,0 +1,9 @@
+mutation updateAcademicYear($id: uuid!,$is_current: Boolean! ) {
+  update_academic_year(where: {id: {_eq: $id}, is_current: {_eq: false}}, _set: {is_current: $is_current}) {
+    returning {
+      id
+      is_current
+      value
+    }
+  }
+}

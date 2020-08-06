@@ -9,6 +9,7 @@ import assignRoom from './assignRoom.gql'
 import updateResidentStatus from './updateResident.gql'
 import updateRoom from './updateRoom.gql'
 import deleteRoom from './deleteRoom.gql'
+import updateAcademicYear from './updateAcademicYear.gql'
 
 
 
@@ -21,6 +22,7 @@ export const ASSIGN_ROOM = gql`${assignRoom}`
 export const UPDATE_RESIDENT = gql`${updateResidentStatus}`
 export const UPDATE_ROOM = gql`${updateRoom}`
 export const DELETE_ROOM = gql`${deleteRoom}`
+export const UPDATE_ACADEMIC_YEAR = gql `${updateAcademicYear}`
 
 
 

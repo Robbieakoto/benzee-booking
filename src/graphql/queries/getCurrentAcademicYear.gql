@@ -1,5 +1,5 @@
 query getCurrentAcademicYear {
-  academic_year(where: {is_current: {_eq: true}}) {
+  academic_year(where: {is_current: {_eq: true}}, order_by: {value: desc}) {
     id
     value
   }

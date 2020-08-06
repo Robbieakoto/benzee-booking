@@ -12,6 +12,7 @@ import getBookingDetails from "./getBookingDetails.gql"
 import getResidents from "./getResidents.gql"
 import getFiveBookings from "./getFiveBookings.gql"
 import getDashboardStats from "./getDashboardStats.gql"
+import getAllAcademicYears from "./getAllAcademicYears.gql"
 
 export const GET_ROOM_TYPES = gql`${getRoomTypes}`
 export const GET_ROOMS= gql `${getRooms}`
@@ -25,4 +26,5 @@ export const GET_BOOKING_DETAILS = gql `${getBookingDetails}`
 export const GET_RESIDENTS = gql`${getResidents}`
 export const GET_DASHBOARD_STATS = gql `${getDashboardStats}`
 export const GET_PAID_BOOKINGS = gql `${getPaidBookings}`
+export const GET_ALL_ACADEMIC_YEARS = gql `${getAllAcademicYears}`
 

@@ -1,0 +1,6 @@
+query getAllAcademicYears {
+  academic_years: academic_year(order_by: {value: asc}) {
+    id
+    value
+  }
+}
