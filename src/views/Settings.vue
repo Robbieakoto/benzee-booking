@@ -147,9 +147,6 @@ export default {
             const data = cache.readQuery({
               query: GET_ALL_ACADEMIC_YEARS
             }); 
-            const currentYear = data.academic_years.find(currentYear => currentYear.id === this.currentAcademicYear.id);
-            console.log(currentYear)
-            currentYear.is_current= false
 
             const academicYear = data.academic_years.find(academicYear => academicYear.id === this.academic_year_id);
             academicYear.is_current = true
@@ -158,7 +155,6 @@ export default {
               query: GET_ALL_ACADEMIC_YEARS,
               data
             });
-            this.academicYearUpdated = true
            } 
          }
       })

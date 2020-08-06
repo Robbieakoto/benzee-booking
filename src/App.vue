@@ -13,6 +13,7 @@ export default {
     titleTemplate: '%s | BenZee Residency Booking',
     meta: [
       { charset: 'utf-8' },
+      { name:'description', content: 'BenZee Residency is about 20 min drive from the International Airport and 10-15 mins from two shopping malls. Within 3 mins walk away from the hostel, taxis are available, with the occasional buses(trotro) passing by.'},
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
     ]
   }
